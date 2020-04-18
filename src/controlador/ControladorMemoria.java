@@ -18,11 +18,13 @@ public class ControladorMemoria {
             turn.add(val);
         }
     }
+    
     public static void AgregarMedico(modelo.Medico val){
         if(!med.contains(val)){
             med.add(val);
         }
     }
+    
     public static void AgregarAmbulancia(modelo.Ambulancia val){
         if(!amb.contains(val)){
             amb.add(val);
