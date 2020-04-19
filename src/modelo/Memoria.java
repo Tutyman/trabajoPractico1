@@ -1,13 +1,8 @@
-package controlador;
+package modelo;
 
 import java.util.ArrayList;
-import modelo.Ambulancia;
-import modelo.Medico;
-import modelo.Resultado;
-import modelo.Turno;
 
-public class ControladorMemoria {
-    
+public class Memoria {
     static ArrayList<modelo.Turno> turn = new ArrayList();
     static ArrayList<modelo.Medico> med = new ArrayList();
     static ArrayList<modelo.Ambulancia> amb = new ArrayList();
@@ -58,21 +53,21 @@ public class ControladorMemoria {
 
     }
     public static void AgregarResultadoTur(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Turno tur){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombreYApellido(), per.getTelefono(), niv, cant, "Turno: "+ tur.getFecha()+ " " + tur.getHora());
+            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "" + per.getApellido(), per.getTelefono(), niv, cant, "Turno: "+ tur.getFecha()+ " " + tur.getHora());
         if(!result.contains(res)){
             result.add(res);
         }
         
     }
     public static void AgregarResultadoMed(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Medico med){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombreYApellido(), per.getTelefono(), niv, cant, "Medico: " + med.getNombre());
+            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "" + per.getApellido(), per.getTelefono(), niv, cant, "Medico: " + med.getNombre());
         if(!result.contains(res)){
             result.add(res);
         }
         
     }
     public static void AgregarResultadoAmb(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Ambulancia amb){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombreYApellido(), per.getTelefono(), niv, cant, "Numero de Ambulancia: " + amb.getNumero());
+            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "" + per.getApellido(), per.getTelefono(), niv, cant, "Numero de Ambulancia: " + amb.getNumero());
         if(!result.contains(res)){
             result.add(res);
         }
@@ -84,7 +79,7 @@ public class ControladorMemoria {
     }
 
     public static void setTurn(ArrayList<Turno> turn) {
-        ControladorMemoria.turn = turn;
+        Memoria.turn = turn;
     }
 
     public static ArrayList<Medico> getMed() {
@@ -92,7 +87,7 @@ public class ControladorMemoria {
     }
 
     public static void setMed(ArrayList<Medico> med) {
-        ControladorMemoria.med = med;
+        Memoria.med = med;
     }
 
     public static ArrayList<Ambulancia> getAmb() {
@@ -100,7 +95,7 @@ public class ControladorMemoria {
     }
 
     public static void setAmb(ArrayList<Ambulancia> amb) {
-        ControladorMemoria.amb = amb;
+        Memoria.amb = amb;
     }
 
     public static ArrayList<Resultado> getResult() {
@@ -108,6 +103,8 @@ public class ControladorMemoria {
     }
 
     public static void setResult(ArrayList<Resultado> result) {
-        ControladorMemoria.result = result;
+        Memoria.result = result;
     }
+
+    
 }

@@ -3,26 +3,20 @@ package modelo;
 public class Persona {
 
     private Integer dni;
-    private String nombreYApellido;
+    private String nombre;
+    private String apellido;
     private String domicilio;
     private String telefono;
 
-    public Persona() {
-    }
-
-    public Persona(Integer dni, String nombreYApellido, String domicilio, String telefono) {
+    public Persona(Integer dni, String nombre, String apellido, String domicilio, String telefono) {
         this.dni = dni;
-        this.nombreYApellido = nombreYApellido;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public Persona() {
     }
 
     public Integer getDni() {
@@ -33,12 +27,20 @@ public class Persona {
         this.dni = dni;
     }
 
-    public String getNombreYApellido() {
-        return nombreYApellido;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreYApellido(String nombreYApellido) {
-        this.nombreYApellido = nombreYApellido;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getDomicilio() {
@@ -48,4 +50,13 @@ public class Persona {
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
 }

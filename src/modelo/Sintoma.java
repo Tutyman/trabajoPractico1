@@ -1,6 +1,6 @@
 package modelo;
 
-public class Sintoma {
+public class Sintoma extends Nivel{
 
     private String descripcion;
 
@@ -8,6 +8,11 @@ public class Sintoma {
     }
 
     public Sintoma(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Sintoma(String descripcion, String niv) {
+        super(niv);
         this.descripcion = descripcion;
     }
 

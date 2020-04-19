@@ -63,6 +63,7 @@ public class VentanaAsignar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asignar Recurso");
 
+        LbNivel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         LbNivel.setText("Este paciente es de nivel 2");
 
         TbAsiganar.setModel(new javax.swing.table.DefaultTableModel(
@@ -90,9 +91,11 @@ public class VentanaAsignar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LbNivel)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LbNivel)
+                        .addGap(0, 239, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,15 +103,15 @@ public class VentanaAsignar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(LbNivel)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void TbAsiganarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TbAsiganarMouseClicked
-        controlador.ControladorAsignar.AsignarRecurso(controlador.ControladorAsignar.getNiv());
+        controlador.ControladorGestionRecursos.AsignarRecurso(controlador.ControladorGestionRecursos.getNiv());
     }//GEN-LAST:event_TbAsiganarMouseClicked
 
     /**

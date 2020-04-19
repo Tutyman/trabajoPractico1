@@ -2,20 +2,20 @@ package modelo;
 
 public class Nivel {
 
-    private String descripcion;
+    private String niv;
 
     public Nivel() {
     }
 
-    public Nivel(String descripcion) {
-        this.descripcion = descripcion;
+    public Nivel(String niv) {
+        this.niv = niv;
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return niv;
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.niv = descripcion;
     }
 }

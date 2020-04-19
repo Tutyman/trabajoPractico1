@@ -21,7 +21,7 @@ public class ControladorListarLlamadas {
         TableRowSorter<TableModel> sorter; //Necesaria para el filtrado de la tabla
         int i;
         
-        ArrayList<modelo.Resultado> rest = controlador.ControladorMemoria.getResult();
+        ArrayList<modelo.Resultado> rest = modelo.Memoria.getResult();
 
         //Se crea un modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel() {
