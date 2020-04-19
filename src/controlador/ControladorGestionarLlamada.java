@@ -1,7 +1,14 @@
 package controlador;
 
+import java.awt.Component;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class ControladorGestionarLlamada {
 
@@ -12,7 +19,7 @@ public class ControladorGestionarLlamada {
         vreg.setLocationRelativeTo(null);
     }
 
-    public static void Registrar() {
+    public static void Registrar() throws ParseException {
         Boolean valor = VerificarCampo();
         JOptionPane op1 = new JOptionPane();
         if (valor == false) {

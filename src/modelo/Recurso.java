@@ -1,5 +1,5 @@
 package modelo;
 
-public abstract class Recurso extends Turno{
+public abstract class Recurso{
     
 }

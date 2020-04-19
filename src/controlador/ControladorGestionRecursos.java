@@ -1,7 +1,10 @@
 package controlador;
 
 import java.awt.HeadlessException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -71,15 +74,15 @@ public class ControladorGestionRecursos {
 
     }
 
-    public static void Iniciar(String nivel, modelo.Llamada la, modelo.Persona pe, String canti){
+    public static void Iniciar(String nivel, modelo.Llamada la, modelo.Persona pe, String canti) throws ParseException{
         vasig.setVisible(true);
         vasig.setLocationRelativeTo(null);
         vasig.getLbNivel().setText("La persona se encuentrar en el nivel de gravedad N°"+nivel);
-        CargarRecursos(nivel);
         niv = nivel;
         llam = la;
         per = pe;
         can = canti;
+        CargarRecursos(nivel);
     }
     
     public static Boolean VerificarRecurso(String nivel) {
@@ -133,7 +136,7 @@ public class ControladorGestionRecursos {
         controlador.ControladorGrafica.Iniciar();
     }
     
-    public static void CargarRecursos(String nivel) {
+    public static void CargarRecursos(String nivel) throws ParseException {
         TableRowSorter<TableModel> sorter; //Necesaria para el filtrado de la tabla
         int i;
 
@@ -148,7 +151,7 @@ public class ControladorGestionRecursos {
 
         switch (nivel) {
             case "1":
-                ArrayList<modelo.Turno> tur = modelo.Memoria.getTurn();
+                ArrayList<modelo.Turno> tur = VerificarFecha(llam.getFecha(), modelo.Memoria.getTurn());
                 mod.addColumn("Fecha");  //Columna 0
                 mod.addColumn("Hora");//Columna 1
                 mod.addColumn("Telefono");//Columna 1
@@ -158,7 +161,8 @@ public class ControladorGestionRecursos {
                             = {
                                 tur.get(i).getFecha(),
                                 tur.get(i).getHora(),
-                                tur.get(i).getTelefono(),};
+                                tur.get(i).getTelefono()
+                            };
                     //Se añade el objeto creado al modelo
                     mod.addRow(fila);
                 }
@@ -251,6 +255,22 @@ public class ControladorGestionRecursos {
             JOptionPane.showMessageDialog(null, "Error: " + ex + "\nInténtelo nuevamente", " .::Error En la Operacion::.", JOptionPane.ERROR_MESSAGE);
 
         }
+    }
+    
+    public static ArrayList<modelo.Turno> VerificarFecha(String fecha, ArrayList<modelo.Turno> tur) throws ParseException{
+        ArrayList<modelo.Turno> res = new ArrayList();
+        int i;
+        Calendar cal = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        cal.setTime(sdf.parse(fecha));
+        for (i = 0; i<tur.size() ; i++){
+            cal2.setTime(sdf.parse(tur.get(i).getFecha()));
+            if(cal2.getTime().getDate()> cal.getTime().getDate() & (cal2.getTime().getMonth()+1) >= (cal.getTime().getMonth()+1) & (cal2.getTime().getYear()+1900) == (cal.getTime().getYear()+1900)){
+                res.add(tur.get(i));
+            }
+        }
+        return res;
     }
 
     public static String getNiv() {

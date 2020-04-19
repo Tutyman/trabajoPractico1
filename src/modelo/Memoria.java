@@ -7,11 +7,16 @@ public class Memoria {
     static ArrayList<modelo.Medico> med = new ArrayList();
     static ArrayList<modelo.Ambulancia> amb = new ArrayList();
     static ArrayList<modelo.Resultado> result = new ArrayList();
+    static ArrayList<modelo.Nivel> niv = new ArrayList();
     
     public static void AgregarTurno(modelo.Turno val){
         if(!turn.contains(val)){
             turn.add(val);
         }
+    }
+    
+    public static void AgregarNivelS(modelo.Nivel val){
+        niv.add(val);
     }
     
     public static void AgregarMedico(modelo.Medico val){
@@ -60,14 +65,14 @@ public class Memoria {
         
     }
     public static void AgregarResultadoMed(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Medico med){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "" + per.getApellido(), per.getTelefono(), niv, cant, "Medico: " + med.getNombre());
+            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "  " + per.getApellido(), per.getTelefono(), niv, cant, "Medico: " + med.getNombre());
         if(!result.contains(res)){
             result.add(res);
         }
         
     }
     public static void AgregarResultadoAmb(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Ambulancia amb){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "" + per.getApellido(), per.getTelefono(), niv, cant, "Numero de Ambulancia: " + amb.getNumero());
+            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + " " + per.getApellido(), per.getTelefono(), niv, cant, "Numero de Ambulancia: " + amb.getNumero());
         if(!result.contains(res)){
             result.add(res);
         }
@@ -104,6 +109,14 @@ public class Memoria {
 
     public static void setResult(ArrayList<Resultado> result) {
         Memoria.result = result;
+    }
+
+    public static ArrayList<Nivel> getNiv() {
+        return niv;
+    }
+
+    public static void setNiv(ArrayList<Nivel> niv) {
+        Memoria.niv = niv;
     }
 
     
