@@ -85,12 +85,12 @@ public class ControladorGestionRecursos {
         CargarRecursos(nivel);
     }
     
-    public static Boolean VerificarRecurso(String nivel) {
+    public static Boolean VerificarRecurso(String nivel, String fecha) throws ParseException {
         Boolean valor = false;
 
         switch (nivel) {
             case "1":
-                int tr = modelo.Memoria.getTurn().size();
+                int tr = VerificarFecha(fecha, modelo.Memoria.getTurn()).size();
                 if (tr != 0) {
                     valor = true;
                 }

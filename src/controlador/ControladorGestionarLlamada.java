@@ -35,7 +35,7 @@ public class ControladorGestionarLlamada {
             modelo.Persona per = new modelo.Persona(dni, nombre, apellido, domicilio, telefono);
             String ca = controlador.ControladorGestionRecursos.Cantidad();
             String niv = controlador.ControladorGestionRecursos.clasificarNivel();
-            if (controlador.ControladorGestionRecursos.VerificarRecurso(niv) == true) {
+            if (controlador.ControladorGestionRecursos.VerificarRecurso(niv, SacarFecha()) == true) {
                 controlador.ControladorGestionRecursos.Iniciar(niv, llam, per, ca);
                 vreg.dispose();
             } else {
@@ -72,19 +72,22 @@ public class ControladorGestionarLlamada {
         } else if (vreg.getTxtNombre().getText().isEmpty()) {
             valor = true;
             op1.showMessageDialog(vreg, "Debe ingresar el Nombre");
-            vreg.getTxtDNI().requestFocus();
+            vreg.getTxtNombre().requestFocus();
         }else if (vreg.getTxtApellido().getText().isEmpty()) {
             valor = true;
             op1.showMessageDialog(vreg, "Debe ingresar el Apellido");
-            vreg.getTxtDNI().requestFocus();
+            vreg.getTxtApellido().requestFocus();
         } else if (vreg.getTxtDomicilio().getText().isEmpty()) {
             valor = true;
             op1.showMessageDialog(vreg, "Debe ingresar el Domicilio");
-            vreg.getTxtDNI().requestFocus();
+            vreg.getTxtDomicilio().requestFocus();
         }else if (vreg.getTxtTelefono().getText().isEmpty()) {
             valor = true;
             op1.showMessageDialog(vreg, "Debe ingresar el Telefono");
-            vreg.getTxtDNI().requestFocus();
+            vreg.getTxtTelefono().requestFocus();
+        }else if(vreg.getBoxTos().isSelected() == false & vreg.getBoxDolorMuscular().isSelected() == false & vreg.getBoxDolorGarganta().isSelected() == false & vreg.getBoxFatiga().isSelected() == false & vreg.getBoxFiebre().isSelected() == false & vreg.getBoxNauseas().isSelected() == false & vreg.getBoxDolorCabeza().isSelected() == false & vreg.getBoxEscalofrios().isSelected() == false & vreg.getBoxDificultadRespirar().isSelected() == false){
+            valor = true;
+            op1.showMessageDialog(vreg, "No se seleeciono ningun sintoma");
         }
         return valor;
     }
