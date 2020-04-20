@@ -40,6 +40,7 @@ public class ControladorListarLlamadas {
         modelo.addColumn("Nivel");//Columna 1
         modelo.addColumn("Cantidad");//Columna 1
         modelo.addColumn("Recursos");//Columna 1
+        modelo.addColumn("Estado");
 
         for (i = 0; i < rest.size(); i++) {  //Con 'cli' se recorre la lista 'Cliente'
             Object[] fila //Se crea un objeto 'fila' que almacena cada elemento de la lista
@@ -50,7 +51,8 @@ public class ControladorListarLlamadas {
                         rest.get(i).getTelefono(),
                         rest.get(i).getNivel(),
                         rest.get(i).getCantidad(),
-                        rest.get(i).getRecurso()
+                        rest.get(i).getRecurso(),
+                        rest.get(i).getEstado()
                     };
             //Se añade el objeto creado al modelo
             modelo.addRow(fila);

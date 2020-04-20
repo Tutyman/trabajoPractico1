@@ -9,11 +9,12 @@ public class Resultado {
     private String nivel;
     private String cantidad;
     private String recurso;
+    private Estado estado;
 
     public Resultado() {
     }
 
-    public Resultado(String fechahora, String dni, String nombre, String telefono, String nivel, String cantidad, String recurso) {
+    public Resultado(String fechahora, String dni, String nombre, String telefono, String nivel, String cantidad, String recurso, Estado estado) {
         this.fechahora = fechahora;
         this.dni = dni;
         this.nombre = nombre;
@@ -21,6 +22,7 @@ public class Resultado {
         this.nivel = nivel;
         this.cantidad = cantidad;
         this.recurso = recurso;
+        this.estado = estado;
     }
 
     public String getRecurso() {
@@ -78,4 +80,14 @@ public class Resultado {
     public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
+    
 }

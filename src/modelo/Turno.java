@@ -1,6 +1,6 @@
 package modelo;
 
-public class Turno {
+public class Turno extends Recurso{
 
     private String fecha;
     private String hora;
@@ -13,6 +13,7 @@ public class Turno {
         this.fecha = fecha;
         this.hora = hora;
         this.telefono = telefono;
+        super.estado = Estado.ACTIVO;
     }
 
     public String getTelefono() {

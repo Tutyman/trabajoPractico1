@@ -57,22 +57,22 @@ public class Memoria {
         }
 
     }
-    public static void AgregarResultadoTur(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Turno tur){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "" + per.getApellido(), per.getTelefono(), niv, cant, "Turno: "+ tur.getFecha()+ " " + tur.getHora());
+    public static void AgregarResultadoTur(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Turno tur, Estado estado){
+            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "" + per.getApellido(), per.getTelefono(), niv, cant, "Turno: "+ tur.getFecha()+ " " + tur.getHora(), estado);
         if(!result.contains(res)){
             result.add(res);
         }
         
     }
-    public static void AgregarResultadoMed(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Medico med){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "  " + per.getApellido(), per.getTelefono(), niv, cant, "Medico: " + med.getNombre());
+    public static void AgregarResultadoMed(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Medico med, Estado estado){
+            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "  " + per.getApellido(), per.getTelefono(), niv, cant, "Medico: " + med.getNombre(), estado);
         if(!result.contains(res)){
             result.add(res);
         }
         
     }
-    public static void AgregarResultadoAmb(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Ambulancia amb){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + " " + per.getApellido(), per.getTelefono(), niv, cant, "Numero de Ambulancia: " + amb.getNumero());
+    public static void AgregarResultadoAmb(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Ambulancia amb, Estado estado){
+            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + " " + per.getApellido(), per.getTelefono(), niv, cant, "Numero de Ambulancia: " + amb.getNumero(), estado);
         if(!result.contains(res)){
             result.add(res);
         }

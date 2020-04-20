@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import modelo.Estado;
 
 public class ControladorGestionRecursos {
 
@@ -112,24 +113,24 @@ public class ControladorGestionRecursos {
         return valor;
     }
     
-    public static void RegistrarTurno(modelo.Turno tur){
-        modelo.Memoria.AgregarResultadoTur(llam, per, niv, can, tur);
+    public static void RegistrarTurno(modelo.Turno tur, Estado estado){
+        modelo.Memoria.AgregarResultadoTur(llam, per, niv, can, tur, estado);
         modelo.Memoria.EliminarTurno(tur);
         vasig.dispose();
         controlador.ControladorGestionarLlamada.Limpiar();
         controlador.ControladorGrafica.Iniciar();
     }
     
-    public static void RegistrarMedico(modelo.Medico med){
-        modelo.Memoria.AgregarResultadoMed(llam, per, niv, can, med);
+    public static void RegistrarMedico(modelo.Medico med, Estado estado){
+        modelo.Memoria.AgregarResultadoMed(llam, per, niv, can, med, estado);
         modelo.Memoria.EliminarMedico(med);
         vasig.dispose();
         controlador.ControladorGestionarLlamada.Limpiar();
         controlador.ControladorGrafica.Iniciar();
     }
     
-    public static void RegistrarAmbulancia(modelo.Ambulancia amb){
-        modelo.Memoria.AgregarResultadoAmb(llam, per, niv, can, amb);
+    public static void RegistrarAmbulancia(modelo.Ambulancia amb, Estado estado){
+        modelo.Memoria.AgregarResultadoAmb(llam, per, niv, can, amb, estado);
         modelo.Memoria.EliminarAmbulancia(amb);
         vasig.dispose();
         controlador.ControladorGestionarLlamada.Limpiar();
@@ -226,7 +227,8 @@ public class ControladorGestionRecursos {
                 resp = JOptionPane.showConfirmDialog(null, "Desea asignar el siguiente recurso: \nFecha:'" + fecha + "',\nhora:'" + hora + "',\ntelefono:'" + telefono + "'?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (resp == 0) {
                     modelo.Turno tur = new modelo.Turno(fecha, hora, telefono);
-                    RegistrarTurno(tur);
+                    tur.estado = Estado.ASIGNADO;
+                    RegistrarTurno(tur, tur.estado);
                     
                 }
                         break;
@@ -236,7 +238,8 @@ public class ControladorGestionRecursos {
                 resp = JOptionPane.showConfirmDialog(null, "Desea asignar el siguiente recurso: \nNombre:'" + nombre + "',\ninterno:'" + interno + "?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (resp == 0) {
                     modelo.Medico med = new modelo.Medico(nombre, interno);
-                    RegistrarMedico(med);
+                    med.estado = Estado.ASIGNADO;
+                    RegistrarMedico(med, med.estado);
                 }
                         break;
                     case "3":
@@ -244,7 +247,8 @@ public class ControladorGestionRecursos {
                         resp = JOptionPane.showConfirmDialog(null, "Desea asignar el siguiente recurso: \nNumero de ambulancia:'" + numero + "?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (resp == 0) {
                     modelo.Ambulancia amb = new modelo.Ambulancia(numero);
-                    RegistrarAmbulancia(amb);
+                    amb.estado = Estado.ASIGNADO;
+                    RegistrarAmbulancia(amb, amb.estado);
                 }
                         break;
                 }
