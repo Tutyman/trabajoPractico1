@@ -13,10 +13,17 @@ import javax.swing.table.TableRowSorter;
 public class ControladorGestionarLlamada {
 
     static vista.VentanaRegistrar vreg = controlador.ControladorGrafica.getVreg();
+    static vista.VentanaRegistrar2 vreg2 = new vista.VentanaRegistrar2();
 
     public static void Iniciar() {
         vreg.setVisible(true);
         vreg.setLocationRelativeTo(null);
+    }
+    
+    public static void Iniciar2() {
+        vreg2.setVisible(true);
+        vreg2.setLocationRelativeTo(null);
+        CargarSintomas();
     }
 
     public static void Registrar() throws ParseException {
@@ -107,6 +114,62 @@ public class ControladorGestionarLlamada {
         vreg.getBoxDolorGarganta().setSelected(false);
         vreg.getBoxDolorCabeza().setSelected(false);
         vreg.getBoxDificultadRespirar().setSelected(false);
+    }
+    
+    public static void CargarSintomas(){
+        TableRowSorter<TableModel> sorter; 
+        int i;
+
+        ArrayList<modelo.Nivel> rest = modelo.Memoria.getNiv();
+        ArrayList<modelo.Nivel> mos = new ArrayList();
+        for (i = 0; i < rest.size(); i++) {
+            if (!rest.get(i).getNiv().equals("0")) {
+                mos.add(rest.get(i));
+            }
+        }
+        
+        DefaultTableModel modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                if (column == 0)
+                return true;
+                return false;
+            }
+            @Override
+            public Class getColumnClass(int columna) {
+                if (columna == 0) {
+                    return Boolean.class;
+                }
+                if (columna == 1) {
+                    return String.class;
+                }
+                return Object.class;
+            }
+            
+        };
+
+        Class[] types = new Class[]{
+            java.lang.Boolean.class, java.lang.Object.class
+        };
+        
+        modelo.addColumn("Seleccionar");
+        modelo.addColumn("Sintomas");
+        Boolean valor = false;
+        
+        for (i = 0; i < mos.size(); i++) {  
+            
+            Object[] fila 
+                    = {
+                        valor,
+                        mos.get(i).getSintoma()
+                    };
+            
+            modelo.addRow(fila);
+        }
+        vreg2.getTbSintomas().setModel(modelo);
+
+        sorter = new TableRowSorter<TableModel>(modelo);
+        vreg2.getTbSintomas().setRowSorter(sorter);
     }
     
 }

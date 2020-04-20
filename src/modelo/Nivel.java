@@ -3,19 +3,32 @@ package modelo;
 public class Nivel {
 
     private String niv;
-
-    public Nivel() {
-    }
+    private String sintoma;
 
     public Nivel(String niv) {
         this.niv = niv;
     }
 
-    public String getDescripcion() {
+    public Nivel(String niv, String sintoma) {
+        this.niv = niv;
+        this.sintoma = sintoma;
+    }
+
+    public String getNiv() {
         return niv;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.niv = descripcion;
+    public void setNiv(String niv) {
+        this.niv = niv;
     }
+
+    public String getSintoma() {
+        return sintoma;
+    }
+
+    public void setSintoma(String sintoma) {
+        this.sintoma = sintoma;
+    }
+
+    
 }
