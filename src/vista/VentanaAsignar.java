@@ -62,10 +62,13 @@ public class VentanaAsignar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asignar Recurso");
+        setPreferredSize(new java.awt.Dimension(640, 480));
+        setResizable(false);
 
-        LbNivel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        LbNivel.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         LbNivel.setText("Este paciente es de nivel 2");
 
+        TbAsiganar.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         TbAsiganar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -94,7 +97,7 @@ public class VentanaAsignar extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LbNivel)
-                        .addGap(0, 239, Short.MAX_VALUE)))
+                        .addGap(0, 352, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -103,7 +106,7 @@ public class VentanaAsignar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(LbNivel)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

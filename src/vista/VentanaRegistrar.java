@@ -181,6 +181,7 @@ public class VentanaRegistrar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion Registrar Persona");
+        setPreferredSize(new java.awt.Dimension(640, 480));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registrar"));
 
