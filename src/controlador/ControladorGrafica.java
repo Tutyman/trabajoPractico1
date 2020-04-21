@@ -4,11 +4,12 @@ import vista.VentanaAsignar;
 import vista.VentanaLista;
 import vista.VentanaPrincipal;
 import vista.VentanaRegistrar;
+import vista.VentanaRegistrar2;
 
 public class ControladorGrafica {
 
     static vista.VentanaPrincipal vpri = new vista.VentanaPrincipal();
-    static vista.VentanaRegistrar vreg = new vista.VentanaRegistrar();
+    static vista.VentanaRegistrar2 vreg = new vista.VentanaRegistrar2();
     static vista.VentanaLista vlis = new vista.VentanaLista();
     static vista.VentanaAsignar vasg = new vista.VentanaAsignar();
 
@@ -25,14 +26,6 @@ public class ControladorGrafica {
         ControladorGrafica.vpri = vpri;
     }
 
-    public static VentanaRegistrar getVreg() {
-        return vreg;
-    }
-
-    public static void setVreg(VentanaRegistrar vreg) {
-        ControladorGrafica.vreg = vreg;
-    }
-
     public static VentanaLista getVlis() {
         return vlis;
     }
@@ -47,5 +40,13 @@ public class ControladorGrafica {
 
     public static void setVasg(VentanaAsignar vasg) {
         ControladorGrafica.vasg = vasg;
+    }
+
+    public static VentanaRegistrar2 getVreg() {
+        return vreg;
+    }
+
+    public static void setVreg(VentanaRegistrar2 vreg) {
+        ControladorGrafica.vreg = vreg;
     }
 }

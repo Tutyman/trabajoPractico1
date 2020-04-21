@@ -1,0 +1,73 @@
+package controlador;
+
+public class ControladorCargar {
+
+    public static void DatosIniciales() {
+        modelo.Nivel nie1 = new modelo.Nivel("1");
+        modelo.Nivel nie2 = new modelo.Nivel("1");
+        modelo.Nivel nie3 = new modelo.Nivel("1");
+        modelo.Nivel nie4 = new modelo.Nivel("1");
+        modelo.Nivel nie5 = new modelo.Nivel("2");
+        modelo.Nivel nie6 = new modelo.Nivel("2");
+        modelo.Nivel nie7 = new modelo.Nivel("2");
+        modelo.Nivel nie8 = new modelo.Nivel("2");
+        modelo.Nivel nie9 = new modelo.Nivel("3");
+        modelo.Nivel nie10 = new modelo.Nivel("0");
+        modelo.Nivel nie11 = new modelo.Nivel("0");
+        modelo.Nivel nie12 = new modelo.Nivel("0");
+        modelo.Sintoma sin1 = new modelo.Sintoma("Tos seca");
+        modelo.Sintoma sin2 = new modelo.Sintoma("Dolor muscular");
+        modelo.Sintoma sin3 = new modelo.Sintoma("Dolor de garganta");
+        modelo.Sintoma sin4 = new modelo.Sintoma("Fatiga");
+        modelo.Sintoma sin5 = new modelo.Sintoma("Fiebre");
+        modelo.Sintoma sin6 = new modelo.Sintoma("Nauseas o vomito");
+        modelo.Sintoma sin7 = new modelo.Sintoma("Dolor de cabeza");
+        modelo.Sintoma sin8 = new modelo.Sintoma("Escalofrios");
+        modelo.Sintoma sin9 = new modelo.Sintoma("Dificultad para respirar");
+        modelo.Sintoma sin10 = new modelo.Sintoma("Flema");
+        modelo.Sintoma sin11 = new modelo.Sintoma("Disnea");
+        modelo.Sintoma sin12 = new modelo.Sintoma("Congestion nasal");
+        modelo.Memoria.AgregarNivel(nie1);
+        modelo.Memoria.AgregarNivel(nie2);
+        modelo.Memoria.AgregarNivel(nie3);
+        modelo.Memoria.AgregarNivel(nie4);
+        modelo.Memoria.AgregarNivel(nie5);
+        modelo.Memoria.AgregarNivel(nie6);
+        modelo.Memoria.AgregarNivel(nie7);
+        modelo.Memoria.AgregarNivel(nie8);
+        modelo.Memoria.AgregarNivel(nie9);
+        modelo.Memoria.AgregarNivel(nie10);
+        modelo.Memoria.AgregarNivel(nie11);
+        modelo.Memoria.AgregarNivel(nie12);
+        modelo.Memoria.AgregarSintoma(sin1);
+        modelo.Memoria.AgregarSintoma(sin2);
+        modelo.Memoria.AgregarSintoma(sin3);
+        modelo.Memoria.AgregarSintoma(sin4);
+        modelo.Memoria.AgregarSintoma(sin5);
+        modelo.Memoria.AgregarSintoma(sin6);
+        modelo.Memoria.AgregarSintoma(sin7);
+        modelo.Memoria.AgregarSintoma(sin8);
+        modelo.Memoria.AgregarSintoma(sin9);
+        modelo.Memoria.AgregarSintoma(sin10);
+        modelo.Memoria.AgregarSintoma(sin11);
+        modelo.Memoria.AgregarSintoma(sin12);
+        modelo.Turno tur1 = new modelo.Turno("19/04/2020", "9:00", "4624");
+        modelo.Turno tur2 = new modelo.Turno("21/04/2020", "10:00", "45756");
+        modelo.Turno tur3 = new modelo.Turno("21/04/2020", "11:00", "456456");
+        modelo.Medico med1 = new modelo.Medico("Eli", "425125");
+        modelo.Medico med2 = new modelo.Medico("Alix", "42555125");
+        modelo.Medico med3 = new modelo.Medico("Clainer", "42235125");
+        modelo.Ambulancia amb1 = new modelo.Ambulancia("1");
+        modelo.Ambulancia amb2 = new modelo.Ambulancia("2");
+        modelo.Ambulancia amb3 = new modelo.Ambulancia("3");
+        modelo.Memoria.AgregarTurno(tur1);
+        modelo.Memoria.AgregarTurno(tur2);
+        modelo.Memoria.AgregarTurno(tur3);
+        modelo.Memoria.AgregarMedico(med1);
+        modelo.Memoria.AgregarMedico(med2);
+        modelo.Memoria.AgregarMedico(med3);
+        modelo.Memoria.AgregarAmbulancia(amb1);
+        modelo.Memoria.AgregarAmbulancia(amb2);
+        modelo.Memoria.AgregarAmbulancia(amb3);
+    }
+}

@@ -8,6 +8,7 @@ public class Memoria {
     static ArrayList<modelo.Ambulancia> amb = new ArrayList();
     static ArrayList<modelo.Resultado> result = new ArrayList();
     static ArrayList<modelo.Nivel> niv = new ArrayList();
+    static ArrayList<modelo.Sintoma> sin = new ArrayList();
     
     public static void AgregarTurno(modelo.Turno val){
         if(!turn.contains(val)){
@@ -15,8 +16,12 @@ public class Memoria {
         }
     }
     
-    public static void AgregarNivelS(modelo.Nivel val){
+    public static void AgregarNivel(modelo.Nivel val){
         niv.add(val);
+    }
+    
+    public static void AgregarSintoma(modelo.Sintoma val){
+        sin.add(val);
     }
     
     public static void AgregarMedico(modelo.Medico val){
@@ -37,7 +42,6 @@ public class Memoria {
                 turn.remove(i);
             }
         }
-
     }
 
     public static void EliminarMedico(modelo.Medico val) {
@@ -117,6 +121,14 @@ public class Memoria {
 
     public static void setNiv(ArrayList<Nivel> niv) {
         Memoria.niv = niv;
+    }
+
+    public static ArrayList<Sintoma> getSin() {
+        return sin;
+    }
+
+    public static void setSin(ArrayList<Sintoma> sin) {
+        Memoria.sin = sin;
     }
 
     

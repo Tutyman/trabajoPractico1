@@ -13,68 +13,13 @@ import modelo.Estado;
 
 public class ControladorGestionRecursos {
 
-    static vista.VentanaRegistrar vreg = controlador.ControladorGrafica.getVreg();
+    static vista.VentanaRegistrar2 vreg = controlador.ControladorGrafica.getVreg();
     static vista.VentanaAsignar vasig = controlador.ControladorGrafica.getVasg();
     static String niv = "";
     static modelo.Llamada llam = new modelo.Llamada();
     static modelo.Persona per = new modelo.Persona();
     static String can;
-
-    public static String clasificarNivel() {
-
-        String nivel = "";
-        Boolean nivel1 = false;
-        Boolean nivel2 = false;
-        if (vreg.getBoxTos().isSelected() == true | vreg.getBoxDolorMuscular().isSelected() == true | vreg.getBoxDolorGarganta().isSelected() == true | vreg.getBoxFatiga().isSelected() == true) {
-            nivel = "1";
-            nivel1 = true;
-        }
-        if (nivel1 == true & (vreg.getBoxFiebre().isSelected() == true | vreg.getBoxNauseas().isSelected() == true | vreg.getBoxDolorCabeza().isSelected() == true | vreg.getBoxEscalofrios().isSelected() == true) | vreg.getBoxFiebre().isSelected() == true | vreg.getBoxNauseas().isSelected() == true | vreg.getBoxDolorCabeza().isSelected() == true | vreg.getBoxEscalofrios().isSelected() == true) {
-            nivel = "2";
-            nivel2 = true;
-        }
-        if (nivel2 == true & vreg.getBoxDificultadRespirar().isSelected() == true | vreg.getBoxDificultadRespirar().isSelected() == true) {
-            nivel = "3";
-        }
-
-        return nivel;
-    }
-
-    public static String Cantidad() {
-        int cant = 0;
-        String res = "";
-        if (vreg.getBoxTos().isSelected() == true) {
-            cant = cant + 1;
-        }
-        if (vreg.getBoxNauseas().isSelected() == true) {
-            cant = cant + 1;
-        }
-        if (vreg.getBoxFiebre().isSelected() == true) {
-            cant = cant + 1;
-        }
-        if (vreg.getBoxFatiga().isSelected() == true) {
-            cant = cant + 1;
-        }
-        if (vreg.getBoxEscalofrios().isSelected() == true) {
-            cant = cant + 1;
-        }
-        if (vreg.getBoxDolorMuscular().isSelected() == true) {
-            cant = cant + 1;
-        }
-        if (vreg.getBoxDolorGarganta().isSelected() == true) {
-            cant = cant + 1;
-        }
-        if (vreg.getBoxDolorCabeza().isSelected() == true) {
-            cant = cant + 1;
-        }
-        if (vreg.getBoxDificultadRespirar().isSelected() == true) {
-            cant = cant + 1;
-        }
-        res = Integer.toString(cant);
-        return res;
-
-    }
-
+    
     public static void Iniciar(String nivel, modelo.Llamada la, modelo.Persona pe, String canti) throws ParseException{
         vasig.setVisible(true);
         vasig.setLocationRelativeTo(null);
@@ -85,7 +30,38 @@ public class ControladorGestionRecursos {
         can = canti;
         CargarRecursos(nivel);
     }
-    
+
+    public static modelo.Nivel clasificarNivel(ArrayList<modelo.Nivel> nive) {
+        int i;
+        modelo.Nivel nivel = new modelo.Nivel("");
+        for (i = 0; i < nive.size(); i++) {
+            if (nive.get(i).getNiv().equals("1")) {
+                nivel.setNiv("1");
+            }
+            if (nive.get(i).getNiv().equals("1") & nive.get(i).getNiv().equals("2") | nive.get(i).getNiv().equals("2")) {
+                nivel.setNiv("2");
+            }
+            if (nive.get(i).getNiv().equals("2") & nive.get(i).getNiv().equals("3") | nive.get(i).getNiv().equals("3")) {
+                nivel.setNiv("3");
+            }
+        }
+        return nivel;
+    }
+
+    public static String Cantidad() {
+        int i;
+        int aux = 0;
+        String fila = "";
+        for(i=0;i<vreg.getTbSintomas().getRowCount();i++){
+            if((Boolean)vreg.getTbSintomas().getValueAt(i, 0) == true){
+                aux++;
+            }
+        }
+        fila = Integer.toString(aux);
+        return fila;
+
+    }
+
     public static Boolean VerificarRecurso(String nivel, String fecha) throws ParseException {
         Boolean valor = false;
 
@@ -207,7 +183,6 @@ public class ControladorGestionRecursos {
     
     public static void AsignarRecurso(String nivel) {
 
-        // CUANDO HACE CLIK SOBRE UNA FILA DE LA TABLA 
         int filaseleccionada;
         try {
             filaseleccionada = vasig.getTbAsiganar().getSelectedRow();
