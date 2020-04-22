@@ -57,17 +57,17 @@ public class ControladorCargar {
         modelo.Memoria.AgregarNivelCarga(nie10);
         modelo.Memoria.AgregarNivelCarga(nie11);
         modelo.Memoria.AgregarNivelCarga(nie12);
-        modelo.Memoria.AgregarSintomaCargar(sin1);
-        modelo.Memoria.AgregarSintomaCargar(sin2);
-        modelo.Memoria.AgregarSintomaCargar(sin3);
-        modelo.Memoria.AgregarSintomaCargar(sin4);
-        modelo.Memoria.AgregarSintomaCargar(sin5);
-        modelo.Memoria.AgregarSintomaCargar(sin6);
-        modelo.Memoria.AgregarSintomaCargar(sin7);
-        modelo.Memoria.AgregarSintomaCargar(sin8);
-        modelo.Memoria.AgregarSintomaCargar(sin9);
-        modelo.Memoria.AgregarSintomaCargar(sin10);
-        modelo.Memoria.AgregarSintomaCargar(sin11);
-        modelo.Memoria.AgregarSintomaCargar(sin12);
+        modelo.Memoria.AgregarSintomaCarga(sin1);
+        modelo.Memoria.AgregarSintomaCarga(sin2);
+        modelo.Memoria.AgregarSintomaCarga(sin3);
+        modelo.Memoria.AgregarSintomaCarga(sin4);
+        modelo.Memoria.AgregarSintomaCarga(sin5);
+        modelo.Memoria.AgregarSintomaCarga(sin6);
+        modelo.Memoria.AgregarSintomaCarga(sin7);
+        modelo.Memoria.AgregarSintomaCarga(sin8);
+        modelo.Memoria.AgregarSintomaCarga(sin9);
+        modelo.Memoria.AgregarSintomaCarga(sin10);
+        modelo.Memoria.AgregarSintomaCarga(sin11);
+        modelo.Memoria.AgregarSintomaCarga(sin12);
     }
 }

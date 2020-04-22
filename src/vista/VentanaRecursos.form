@@ -138,6 +138,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnRegistrarTurnoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -215,6 +218,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnRegistrarMedicoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -274,6 +280,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnRegistrarAmbulanciaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

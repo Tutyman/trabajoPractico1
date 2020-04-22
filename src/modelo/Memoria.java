@@ -28,7 +28,7 @@ public class Memoria {
     public static void AgregarNivelCarga(modelo.Nivel valor){
         nivpre.add(valor);
     }
-    public static void AgregarSintomaCargar(modelo.Sintoma valor){
+    public static void AgregarSintomaCarga(modelo.Sintoma valor){
         sinpre.add(valor);
     }
     public static void AgregarSintoma(modelo.Sintoma valor){

@@ -115,6 +115,11 @@ public class VentanaRecursos extends javax.swing.JFrame {
         jLabel3.setText("Telefono");
 
         BtnRegistrarTurno.setText("Registrar");
+        BtnRegistrarTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarTurnoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,6 +170,11 @@ public class VentanaRecursos extends javax.swing.JFrame {
         jLabel5.setText("Interno");
 
         BtnRegistrarMedico.setText("Registrar");
+        BtnRegistrarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarMedicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -207,6 +217,11 @@ public class VentanaRecursos extends javax.swing.JFrame {
         jLabel6.setText("N° de ambulancia");
 
         BtnRegistrarAmbulancia.setText("Registrar");
+        BtnRegistrarAmbulancia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarAmbulanciaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -262,6 +277,18 @@ public class VentanaRecursos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnRegistrarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarTurnoActionPerformed
+        controlador.ControladorRecursos.RegistrarTurno();
+    }//GEN-LAST:event_BtnRegistrarTurnoActionPerformed
+
+    private void BtnRegistrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarMedicoActionPerformed
+        controlador.ControladorRecursos.RegistrarMedico();
+    }//GEN-LAST:event_BtnRegistrarMedicoActionPerformed
+
+    private void BtnRegistrarAmbulanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarAmbulanciaActionPerformed
+        controlador.ControladorRecursos.RegistrarAmbulancia();
+    }//GEN-LAST:event_BtnRegistrarAmbulanciaActionPerformed
 
     /**
      * @param args the command line arguments

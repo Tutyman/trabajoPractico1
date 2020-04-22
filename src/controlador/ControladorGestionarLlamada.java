@@ -192,8 +192,8 @@ public class ControladorGestionarLlamada {
     public static void AgregarSintoma(){
         modelo.Nivel ns = new modelo.Nivel(vreg.getBoxNivel().getSelectedItem().toString());
         modelo.Sintoma si = new modelo.Sintoma(vreg.getTxtSintoma().getText());
-        modelo.Memoria.AgregarNivel(ns);
-        modelo.Memoria.AgregarSintoma(si);
+        modelo.Memoria.AgregarNivelCarga(ns);
+        modelo.Memoria.AgregarSintomaCarga(si);
         CargarSintomas();
     }
     
