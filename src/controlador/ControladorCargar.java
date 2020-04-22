@@ -27,9 +27,9 @@ public class ControladorCargar {
         modelo.Sintoma sin10 = new modelo.Sintoma("Flema");
         modelo.Sintoma sin11 = new modelo.Sintoma("Disnea");
         modelo.Sintoma sin12 = new modelo.Sintoma("Congestion nasal");
-        modelo.Turno tur1 = new modelo.Turno("19/04/2020", "9:00", "4624");
-        modelo.Turno tur2 = new modelo.Turno("21/04/2020", "10:00", "45756");
-        modelo.Turno tur3 = new modelo.Turno("22/04/2020", "11:00", "456456");
+        modelo.Turno tur1 = new modelo.Turno("23/04/2020", "9:00", "4624");
+        modelo.Turno tur2 = new modelo.Turno("23/04/2020", "10:00", "45756");
+        modelo.Turno tur3 = new modelo.Turno("23/04/2020", "11:00", "456456");
         modelo.Medico med1 = new modelo.Medico("Eli", "425125");
         modelo.Medico med2 = new modelo.Medico("Alix", "42555125");
         modelo.Medico med3 = new modelo.Medico("Clainer", "42235125");
