@@ -114,7 +114,7 @@ public class VentanaAsignar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TbAsiganarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TbAsiganarMouseClicked
-        controlador.ControladorGestionRecursos.AsignarRecurso(controlador.ControladorGestionRecursos.getNiv());
+        controlador.ControladorGestionRecursos.AsignarRecurso(controlador.ControladorGestionRecursos.getNiv().getNiv());
     }//GEN-LAST:event_TbAsiganarMouseClicked
 
     /**

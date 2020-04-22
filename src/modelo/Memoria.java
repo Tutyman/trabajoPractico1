@@ -3,133 +3,119 @@ package modelo;
 import java.util.ArrayList;
 
 public class Memoria {
-    static ArrayList<modelo.Turno> turn = new ArrayList();
-    static ArrayList<modelo.Medico> med = new ArrayList();
-    static ArrayList<modelo.Ambulancia> amb = new ArrayList();
-    static ArrayList<modelo.Resultado> result = new ArrayList();
+    static ArrayList<modelo.Llamada> llam = new ArrayList();
+    static ArrayList<modelo.Persona> per = new ArrayList();
     static ArrayList<modelo.Nivel> niv = new ArrayList();
+    static ArrayList<modelo.Nivel> nivpre = new ArrayList();
     static ArrayList<modelo.Sintoma> sin = new ArrayList();
+    static ArrayList<modelo.Sintoma> sinpre = new ArrayList();
+    static ArrayList<String> cansin = new ArrayList();
+    static ArrayList<String> recurso = new ArrayList();
+    static ArrayList<modelo.Turno> turpre = new ArrayList();
+    static ArrayList<modelo.Medico> medpre = new ArrayList();
+    static ArrayList<modelo.Ambulancia> ambpre =  new ArrayList();
     
-    public static void AgregarTurno(modelo.Turno val){
-        if(!turn.contains(val)){
-            turn.add(val);
+    public static void AgregarLlamada(modelo.Llamada valor){
+        llam.add(valor);
+    }
+    
+    public static void AgregarPersona(modelo.Persona valor){
+        per.add(valor);
+    }
+    public static void AgregarNivel(modelo.Nivel valor){
+        niv.add(valor);
+    }
+    public static void AgregarNivelCarga(modelo.Nivel valor){
+        nivpre.add(valor);
+    }
+    public static void AgregarSintomaCargar(modelo.Sintoma valor){
+        sinpre.add(valor);
+    }
+    public static void AgregarSintoma(modelo.Sintoma valor){
+        sin.add(valor);
+    }
+    public static void AgregarSintomaCantidad(String valor){
+        cansin.add(valor);
+    }
+    public static void AgregarRecurso(String valor){
+        recurso.add(valor);
+    }
+    public static void AgregarTurnoCarga(modelo.Turno valor){
+        turpre.add(valor);
+    }
+    public static void AgregarMedicoCarga(modelo.Medico valor){
+        medpre.add(valor);
+    }
+    public static void AgregarAmbulanciaCarga(modelo.Ambulancia valor){
+        ambpre.add(valor);
+    }
+    
+    public static void EstadoTurno(modelo.Turno valor){
+        for (int i = 0; i < turpre.size(); i++) {
+            if (turpre.get(i).getFecha().equals(valor.getFecha()) & turpre.get(i).getHora().equals(valor.getHora())) {
+                turpre.get(i).estado = Estado.ASIGNADO;
+            }
         }
     }
     
-    public static void AgregarNivel(modelo.Nivel val){
-        niv.add(val);
-    }
-    
-    public static void AgregarSintoma(modelo.Sintoma val){
-        sin.add(val);
-    }
-    
-    public static void AgregarMedico(modelo.Medico val){
-        if(!med.contains(val)){
-            med.add(val);
+    public static void EstadoMedico(modelo.Medico valor){
+        for (int i = 0; i < medpre.size(); i++) {
+            if (medpre.get(i).getNombre().equals(valor.getNombre()) & medpre.get(i).getInterno().equals(valor.getInterno())) {
+                medpre.get(i).estado = Estado.ASIGNADO;
+            }
         }
     }
     
-    public static void AgregarAmbulancia(modelo.Ambulancia val){
-        if(!amb.contains(val)){
-            amb.add(val);
-        }
-    }
-  
-    public static void EliminarTurno(modelo.Turno val) {
-        for (int i = 0; i < turn.size(); i++) {
-            if (turn.get(i).getFecha().equals(val.getFecha()) & turn.get(i).getHora().equals(val.getHora())) {
-                turn.remove(i);
+    public static void EstadoAmbulancia(modelo.Ambulancia valor){
+        for (int i = 0; i < ambpre.size(); i++) {
+            if (ambpre.get(i).getNumero().equals(valor.getNumero())) {
+                ambpre.get(i).estado = Estado.ASIGNADO;
             }
         }
     }
 
-    public static void EliminarMedico(modelo.Medico val) {
-        for (int i = 0; i < med.size(); i++) {
-            if (med.get(i).getNombre().equals(val.getNombre()) & med.get(i).getInterno().equals(val.getInterno())) {
-                med.remove(i);
-            }
-        }
-
+    public static ArrayList<Llamada> getLlam() {
+        return llam;
     }
 
-    public static void EliminarAmbulancia(modelo.Ambulancia val) {
-        for (int i = 0; i < amb.size(); i++) {
-            if (amb.get(i).getNumero().equals(val.getNumero())) {
-                amb.remove(i);
-            }
-        }
-
-    }
-    public static void AgregarResultadoTur(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Turno tur, Estado estado){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "" + per.getApellido(), per.getTelefono(), niv, cant, "Turno: "+ tur.getFecha()+ " " + tur.getHora(), estado);
-        if(!result.contains(res)){
-            result.add(res);
-        }
-        
-    }
-    public static void AgregarResultadoMed(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Medico med, Estado estado){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + "  " + per.getApellido(), per.getTelefono(), niv, cant, "Medico: " + med.getNombre(), estado);
-        if(!result.contains(res)){
-            result.add(res);
-        }
-        
-    }
-    public static void AgregarResultadoAmb(modelo.Llamada llam, modelo.Persona per, String niv, String cant, modelo.Ambulancia amb, Estado estado){
-            modelo.Resultado res = new modelo.Resultado(llam.getFecha() +" "+llam.getHora(), Integer.toString(per.getDni()), per.getNombre() + " " + per.getApellido(), per.getTelefono(), niv, cant, "Numero de Ambulancia: " + amb.getNumero(), estado);
-        if(!result.contains(res)){
-            result.add(res);
-        }
-        
-    }
-
-    public static ArrayList<Turno> getTurn() {
-        return turn;
-    }
-
-    public static void setTurn(ArrayList<Turno> turn) {
-        Memoria.turn = turn;
-    }
-
-    public static ArrayList<Medico> getMed() {
-        return med;
-    }
-
-    public static void setMed(ArrayList<Medico> med) {
-        Memoria.med = med;
-    }
-
-    public static ArrayList<Ambulancia> getAmb() {
-        return amb;
-    }
-
-    public static void setAmb(ArrayList<Ambulancia> amb) {
-        Memoria.amb = amb;
-    }
-
-    public static ArrayList<Resultado> getResult() {
-        return result;
-    }
-
-    public static void setResult(ArrayList<Resultado> result) {
-        Memoria.result = result;
+    public static ArrayList<Persona> getPer() {
+        return per;
     }
 
     public static ArrayList<Nivel> getNiv() {
         return niv;
     }
 
-    public static void setNiv(ArrayList<Nivel> niv) {
-        Memoria.niv = niv;
+    public static ArrayList<Nivel> getNivpre() {
+        return nivpre;
     }
 
     public static ArrayList<Sintoma> getSin() {
         return sin;
     }
 
-    public static void setSin(ArrayList<Sintoma> sin) {
-        Memoria.sin = sin;
+    public static ArrayList<String> getCansin() {
+        return cansin;
     }
 
-    
+    public static ArrayList<Turno> getTurpre() {
+        return turpre;
+    }
+
+    public static ArrayList<Medico> getMedpre() {
+        return medpre;
+    }
+
+    public static ArrayList<Ambulancia> getAmbpre() {
+        return ambpre;
+    }
+
+    public static ArrayList<String> getRecurso() {
+        return recurso;
+    }
+
+    public static ArrayList<Sintoma> getSinpre() {
+        return sinpre;
+    }
+
 }

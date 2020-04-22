@@ -9,7 +9,7 @@ import vista.VentanaRegistrar2;
 public class ControladorGrafica {
 
     static vista.VentanaPrincipal vpri = new vista.VentanaPrincipal();
-    static vista.VentanaRegistrar2 vreg = new vista.VentanaRegistrar2();
+    static vista.VentanaRegistrar vreg = new vista.VentanaRegistrar();
     static vista.VentanaLista vlis = new vista.VentanaLista();
     static vista.VentanaAsignar vasg = new vista.VentanaAsignar();
 
@@ -42,11 +42,11 @@ public class ControladorGrafica {
         ControladorGrafica.vasg = vasg;
     }
 
-    public static VentanaRegistrar2 getVreg() {
+    public static VentanaRegistrar getVreg() {
         return vreg;
     }
 
-    public static void setVreg(VentanaRegistrar2 vreg) {
+    public static void setVreg(VentanaRegistrar vreg) {
         ControladorGrafica.vreg = vreg;
     }
 }

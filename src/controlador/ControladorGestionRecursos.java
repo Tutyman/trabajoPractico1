@@ -1,5 +1,7 @@
 package controlador;
 
+import static controlador.ControladorGrafica.vreg;
+import static controlador.ControladorGrafica.vasg;
 import java.awt.HeadlessException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,21 +12,21 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Estado;
+import modelo.Nivel;
 
 public class ControladorGestionRecursos {
 
-    static vista.VentanaRegistrar2 vreg = controlador.ControladorGrafica.getVreg();
-    static vista.VentanaAsignar vasig = controlador.ControladorGrafica.getVasg();
-    static String niv = "";
+    static modelo.Nivel niv = new modelo.Nivel("");
     static modelo.Llamada llam = new modelo.Llamada();
     static modelo.Persona per = new modelo.Persona();
     static String can;
     
+    
     public static void Iniciar(String nivel, modelo.Llamada la, modelo.Persona pe, String canti) throws ParseException{
-        vasig.setVisible(true);
-        vasig.setLocationRelativeTo(null);
-        vasig.getLbNivel().setText("La persona se encuentrar en el nivel de gravedad N°"+nivel);
-        niv = nivel;
+        vasg.setVisible(true);
+        vasg.setLocationRelativeTo(null);
+        vasg.getLbNivel().setText("La persona se encuentrar en el nivel de gravedad N°"+nivel);
+        niv.setNiv(nivel);
         llam = la;
         per = pe;
         can = canti;
@@ -64,24 +66,38 @@ public class ControladorGestionRecursos {
 
     public static Boolean VerificarRecurso(String nivel, String fecha) throws ParseException {
         Boolean valor = false;
+        int i;
+        int aux = 0;
 
         switch (nivel) {
             case "1":
-                int tr = VerificarFecha(fecha, modelo.Memoria.getTurn()).size();
-                if (tr != 0) {
-                    valor = true;
+                for (i=0; i<VerificarFecha(fecha, modelo.Memoria.getTurpre()).size();i++) {
+                    if(VerificarFecha(fecha, modelo.Memoria.getTurpre()).get(i).estado != Estado.ACTIVO & aux == 0){
+                        valor = false;
+                    }else {
+                        valor = true;
+                        aux++;
+                    }
                 }
                 break;
             case "2":
-                int med = modelo.Memoria.getMed().size();
-                if (med != 0) {
-                    valor = true;
+                for (i=0; i<modelo.Memoria.getMedpre().size();i++) {
+                    if(modelo.Memoria.getMedpre().get(i).estado != Estado.ACTIVO & aux == 0){
+                        valor = false;
+                    }else {
+                        valor = true;
+                        aux++;
+                    }
                 }
                 break;
             case "3":
-                int amb = modelo.Memoria.getAmb().size();
-                if (amb != 0) {
-                    valor = true;
+                for (i=0; i<modelo.Memoria.getAmbpre().size();i++) {
+                    if(modelo.Memoria.getAmbpre().get(i).estado != Estado.ACTIVO & aux == 0){
+                        valor = false;
+                    }else {
+                        valor = true;
+                        aux++;
+                    }
                 }
                 break;
         }
@@ -90,25 +106,37 @@ public class ControladorGestionRecursos {
     }
     
     public static void RegistrarTurno(modelo.Turno tur, Estado estado){
-        modelo.Memoria.AgregarResultadoTur(llam, per, niv, can, tur, estado);
-        modelo.Memoria.EliminarTurno(tur);
-        vasig.dispose();
+        modelo.Memoria.AgregarLlamada(llam);
+        modelo.Memoria.AgregarPersona(per);
+        modelo.Memoria.AgregarNivel(niv);
+        modelo.Memoria.AgregarSintomaCantidad(can);
+        modelo.Memoria.AgregarRecurso("Fecha: "+tur.getFecha() + ", Hora: " + tur.getHora());
+        modelo.Memoria.EstadoTurno(tur);
+        vasg.dispose();
         controlador.ControladorGestionarLlamada.Limpiar();
         controlador.ControladorGrafica.Iniciar();
     }
     
     public static void RegistrarMedico(modelo.Medico med, Estado estado){
-        modelo.Memoria.AgregarResultadoMed(llam, per, niv, can, med, estado);
-        modelo.Memoria.EliminarMedico(med);
-        vasig.dispose();
+        modelo.Memoria.AgregarLlamada(llam);
+        modelo.Memoria.AgregarPersona(per);
+        modelo.Memoria.AgregarNivel(niv);
+        modelo.Memoria.AgregarSintomaCantidad(can);
+        modelo.Memoria.AgregarRecurso("Medico: "+med.getNombre());
+        modelo.Memoria.EstadoMedico(med);
+        vasg.dispose();
         controlador.ControladorGestionarLlamada.Limpiar();
         controlador.ControladorGrafica.Iniciar();
     }
     
     public static void RegistrarAmbulancia(modelo.Ambulancia amb, Estado estado){
-        modelo.Memoria.AgregarResultadoAmb(llam, per, niv, can, amb, estado);
-        modelo.Memoria.EliminarAmbulancia(amb);
-        vasig.dispose();
+        modelo.Memoria.AgregarLlamada(llam);
+        modelo.Memoria.AgregarPersona(per);
+        modelo.Memoria.AgregarNivel(niv);
+        modelo.Memoria.AgregarSintomaCantidad(can);
+        modelo.Memoria.AgregarRecurso("Ambulancia N°: "+amb.getNumero());
+        modelo.Memoria.EstadoAmbulancia(amb);
+        vasg.dispose();
         controlador.ControladorGestionarLlamada.Limpiar();
         controlador.ControladorGrafica.Iniciar();
     }
@@ -128,7 +156,12 @@ public class ControladorGestionRecursos {
 
         switch (nivel) {
             case "1":
-                ArrayList<modelo.Turno> tur = VerificarFecha(llam.getFecha(), modelo.Memoria.getTurn());
+                ArrayList<modelo.Turno> tur = new ArrayList();
+                for (i=0; i<VerificarFecha(llam.getFecha(), modelo.Memoria.getTurpre()).size();i++) {
+                    if(VerificarFecha(llam.getFecha(), modelo.Memoria.getTurpre()).get(i).estado == Estado.ACTIVO){
+                        tur.add(VerificarFecha(llam.getFecha(), modelo.Memoria.getTurpre()).get(i));
+                    }
+                }
                 mod.addColumn("Fecha");  //Columna 0
                 mod.addColumn("Hora");//Columna 1
                 mod.addColumn("Telefono");//Columna 1
@@ -145,7 +178,12 @@ public class ControladorGestionRecursos {
                 }
                 break;
             case "2":
-                ArrayList<modelo.Medico> med = modelo.Memoria.getMed();
+                ArrayList<modelo.Medico> med = new ArrayList();
+                for (i=0; i<modelo.Memoria.getMedpre().size();i++) {
+                    if(modelo.Memoria.getMedpre().get(i).estado == Estado.ACTIVO){
+                        med.add(modelo.Memoria.getMedpre().get(i));
+                    }
+                }
                 mod.addColumn("Nombre");  //Columna 0
                 mod.addColumn("Interno");//Columna 1
 
@@ -159,7 +197,12 @@ public class ControladorGestionRecursos {
                 }
                 break;
             case "3":
-                ArrayList<modelo.Ambulancia> amb = modelo.Memoria.getAmb();
+                ArrayList<modelo.Ambulancia> amb = new ArrayList();
+                for (i=0; i<modelo.Memoria.getAmbpre().size();i++) {
+                    if(modelo.Memoria.getAmbpre().get(i).estado == Estado.ACTIVO){
+                        amb.add(modelo.Memoria.getAmbpre().get(i));
+                    }
+                }
                 mod.addColumn("Numero de Aambulancia");  //Columna 0
 
                 for (i = 0; i < amb.size(); i++) {  //Con 'cli' se recorre la lista 'Cliente'
@@ -174,25 +217,25 @@ public class ControladorGestionRecursos {
 
         //Se definen las columnas del modelo de tabla
         //Se pasa el modelo a la tabla para que muestre los datos
-        vasig.getTbAsiganar().setModel(mod);
+        vasg.getTbAsiganar().setModel(mod);
 
         // Para filtrar la tabla
         sorter = new TableRowSorter<TableModel>(mod);
-        vasig.getTbAsiganar().setRowSorter(sorter);
+        vasg.getTbAsiganar().setRowSorter(sorter);
     }
     
     public static void AsignarRecurso(String nivel) {
 
         int filaseleccionada;
         try {
-            filaseleccionada = vasig.getTbAsiganar().getSelectedRow();
+            filaseleccionada = vasg.getTbAsiganar().getSelectedRow();
 
             if (filaseleccionada == -1) {
 
                 JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
 
             } else {
-                DefaultTableModel modelotabla = (DefaultTableModel) vasig.getTbAsiganar().getModel();
+                DefaultTableModel modelotabla = (DefaultTableModel) vasg.getTbAsiganar().getModel();
                 int resp;
                 switch(nivel){
                     case "1":
@@ -252,11 +295,11 @@ public class ControladorGestionRecursos {
         return res;
     }
 
-    public static String getNiv() {
+    public static Nivel getNiv() {
         return niv;
     }
 
-    public static void setNiv(String niv) {
+    public static void setNiv(Nivel niv) {
         ControladorGestionRecursos.niv = niv;
     }
 }

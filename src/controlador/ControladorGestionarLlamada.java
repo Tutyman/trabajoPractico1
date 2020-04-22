@@ -10,7 +10,7 @@ import javax.swing.table.TableRowSorter;
 
 public class ControladorGestionarLlamada {
 
-    static vista.VentanaRegistrar2 vreg = controlador.ControladorGrafica.getVreg();
+    static vista.VentanaRegistrar vreg = controlador.ControladorGrafica.getVreg();
 
     public static void Iniciar() {
         vreg.setVisible(true);
@@ -104,8 +104,8 @@ public class ControladorGestionarLlamada {
         TableRowSorter<TableModel> sorter;
         int i;
 
-        ArrayList<modelo.Nivel> rest = modelo.Memoria.getNiv();
-        ArrayList<modelo.Sintoma> sin = modelo.Memoria.getSin();
+        ArrayList<modelo.Nivel> rest = modelo.Memoria.getNivpre();
+        ArrayList<modelo.Sintoma> sin = modelo.Memoria.getSinpre();
         ArrayList<modelo.Sintoma> mos = new ArrayList();
         for (i = 0; i < rest.size(); i++) {
             if (!rest.get(i).getNiv().equals("0")) {
@@ -156,8 +156,8 @@ public class ControladorGestionarLlamada {
 
     public static ArrayList<modelo.Nivel> CargarSeleccionados() {
         ArrayList<modelo.Nivel> niv = new ArrayList();
-        ArrayList<modelo.Nivel> val1 = modelo.Memoria.getNiv();
-        ArrayList<modelo.Sintoma> sin = modelo.Memoria.getSin();
+        ArrayList<modelo.Nivel> val1 = modelo.Memoria.getNivpre();
+        ArrayList<modelo.Sintoma> sin = modelo.Memoria.getSinpre();
         int i;
         int j;
 
