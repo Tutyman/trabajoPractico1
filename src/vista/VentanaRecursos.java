@@ -5,6 +5,7 @@
  */
 package vista;
 
+import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
 /**
@@ -27,28 +28,28 @@ public class VentanaRecursos extends javax.swing.JFrame {
         });
     }
 
+    public JFormattedTextField getTxtFecha() {
+        return TxtFecha;
+    }
+
+    public void setTxtFecha(JFormattedTextField TxtFecha) {
+        this.TxtFecha = TxtFecha;
+    }
+
+    public JFormattedTextField getTxtHora() {
+        return TxtHora;
+    }
+
+    public void setTxtHora(JFormattedTextField TxtHora) {
+        this.TxtHora = TxtHora;
+    }
+
     public JTextField getTxtAmbulancia() {
         return TxtAmbulancia;
     }
 
     public void setTxtAmbulancia(JTextField TxtAmbulancia) {
         this.TxtAmbulancia = TxtAmbulancia;
-    }
-
-    public JTextField getTxtFecha() {
-        return TxtFecha;
-    }
-
-    public void setTxtFecha(JTextField TxtFecha) {
-        this.TxtFecha = TxtFecha;
-    }
-
-    public JTextField getTxtHora() {
-        return TxtHora;
-    }
-
-    public void setTxtHora(JTextField TxtHora) {
-        this.TxtHora = TxtHora;
     }
 
     public JTextField getTxtInterno() {
@@ -88,10 +89,10 @@ public class VentanaRecursos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        TxtFecha = new javax.swing.JTextField();
-        TxtHora = new javax.swing.JTextField();
         TxtTelefono = new javax.swing.JTextField();
         BtnRegistrarTurno = new javax.swing.JButton();
+        TxtFecha = new javax.swing.JFormattedTextField();
+        TxtHora = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -121,6 +122,8 @@ public class VentanaRecursos extends javax.swing.JFrame {
             }
         });
 
+        TxtFecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,7 +132,7 @@ public class VentanaRecursos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 603, Short.MAX_VALUE)
                         .addComponent(BtnRegistrarTurno))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,8 +141,8 @@ public class VentanaRecursos extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TxtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(TxtTelefono)
+                            .addComponent(TxtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(TxtFecha)
                             .addComponent(TxtHora))))
                 .addContainerGap())
         );
@@ -248,7 +251,7 @@ public class VentanaRecursos extends javax.swing.JFrame {
                     .addComponent(TxtAmbulancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(BtnRegistrarAmbulancia)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -299,8 +302,8 @@ public class VentanaRecursos extends javax.swing.JFrame {
     private javax.swing.JButton BtnRegistrarMedico;
     private javax.swing.JButton BtnRegistrarTurno;
     private javax.swing.JTextField TxtAmbulancia;
-    private javax.swing.JTextField TxtFecha;
-    private javax.swing.JTextField TxtHora;
+    private javax.swing.JFormattedTextField TxtFecha;
+    private javax.swing.JFormattedTextField TxtHora;
     private javax.swing.JTextField TxtInterno;
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtTelefono;

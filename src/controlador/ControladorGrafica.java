@@ -2,6 +2,7 @@ package controlador;
 
 import vista.VentanaAsignar;
 import vista.VentanaLista;
+import vista.VentanaNiveles;
 import vista.VentanaPrincipal;
 import vista.VentanaRecursos;
 import vista.VentanaRegistrar;
@@ -13,6 +14,7 @@ public class ControladorGrafica {
     static vista.VentanaLista vlis = new vista.VentanaLista();
     static vista.VentanaAsignar vasg = new vista.VentanaAsignar();
     static vista.VentanaRecursos vrec = new vista.VentanaRecursos();
+    static vista.VentanaNiveles vniv = new vista.VentanaNiveles();
 
     public static void Iniciar() {
         vpri.setVisible(true);
@@ -37,5 +39,9 @@ public class ControladorGrafica {
 
     public static VentanaRecursos getVrec() {
         return vrec;
+    }
+
+    public static VentanaNiveles getVniv() {
+        return vniv;
     }
 }
