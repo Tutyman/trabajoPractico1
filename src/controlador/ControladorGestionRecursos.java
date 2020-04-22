@@ -166,7 +166,7 @@ public class ControladorGestionRecursos {
                 mod.addColumn("Hora");//Columna 1
                 mod.addColumn("Telefono");//Columna 1
 
-                for (i = 0; i < tur.size(); i++) {  //Con 'cli' se recorre la lista 'Cliente'
+                for (i = 0; i < tur.size(); i++) {  //Con 'tur' se recorre la lista 'Turno'
                     Object[] fila //Se crea un objeto 'fila' que almacena cada elemento de la lista
                             = {
                                 tur.get(i).getFecha(),
@@ -187,7 +187,7 @@ public class ControladorGestionRecursos {
                 mod.addColumn("Nombre");  //Columna 0
                 mod.addColumn("Interno");//Columna 1
 
-                for (i = 0; i < med.size(); i++) {  //Con 'cli' se recorre la lista 'Cliente'
+                for (i = 0; i < med.size(); i++) {  //Con 'med' se recorre la lista 'Medico'
                     Object[] fila //Se crea un objeto 'fila' que almacena cada elemento de la lista
                             = {
                                 med.get(i).getNombre(),
@@ -205,7 +205,7 @@ public class ControladorGestionRecursos {
                 }
                 mod.addColumn("Numero de Aambulancia");  //Columna 0
 
-                for (i = 0; i < amb.size(); i++) {  //Con 'cli' se recorre la lista 'Cliente'
+                for (i = 0; i < amb.size(); i++) {  //Con 'amb' se recorre la lista 'Ambulancia'
                     Object[] fila //Se crea un objeto 'fila' que almacena cada elemento de la lista
                             = {
                                 amb.get(i).getNumero(),};
