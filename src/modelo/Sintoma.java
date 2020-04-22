@@ -3,7 +3,7 @@ package modelo;
 public class Sintoma {
 
     private String descripcion;
-
+    
     public Sintoma() {
     }
 

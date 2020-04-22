@@ -36,16 +36,21 @@ public class ControladorGestionRecursos {
     public static modelo.Nivel clasificarNivel(ArrayList<modelo.Nivel> nive) {
         int i;
         modelo.Nivel nivel = new modelo.Nivel("");
+        
         for (i = 0; i < nive.size(); i++) {
+            
             if (nive.get(i).getNiv().equals("1")) {
                 nivel.setNiv("1");
             }
+            
             if (nive.get(i).getNiv().equals("1") & nive.get(i).getNiv().equals("2") | nive.get(i).getNiv().equals("2")) {
                 nivel.setNiv("2");
             }
+            
             if (nive.get(i).getNiv().equals("2") & nive.get(i).getNiv().equals("3") | nive.get(i).getNiv().equals("3")) {
                 nivel.setNiv("3");
             }
+            
         }
         return nivel;
     }
@@ -239,35 +244,35 @@ public class ControladorGestionRecursos {
                 int resp;
                 switch(nivel){
                     case "1":
-                String fecha = (String) modelotabla.getValueAt(filaseleccionada, 0);
-                String hora = (String) modelotabla.getValueAt(filaseleccionada, 1);
-                String telefono = (String) modelotabla.getValueAt(filaseleccionada, 2);
-                resp = JOptionPane.showConfirmDialog(null, "Desea asignar el siguiente recurso: \nFecha:'" + fecha + "',\nhora:'" + hora + "',\ntelefono:'" + telefono + "'?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (resp == 0) {
-                    modelo.Turno tur = new modelo.Turno(fecha, hora, telefono);
-                    tur.estado = Estado.ASIGNADO;
-                    RegistrarTurno(tur, tur.estado);
-                    
-                }
+                        String fecha = (String) modelotabla.getValueAt(filaseleccionada, 0);
+                        String hora = (String) modelotabla.getValueAt(filaseleccionada, 1);
+                        String telefono = (String) modelotabla.getValueAt(filaseleccionada, 2);
+                        resp = JOptionPane.showConfirmDialog(null, "Desea asignar el siguiente recurso: \nFecha:'" + fecha + "',\nhora:'" + hora + "',\ntelefono:'" + telefono + "'?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if (resp == 0) {
+                            modelo.Turno tur = new modelo.Turno(fecha, hora, telefono);
+                            tur.estado = Estado.ASIGNADO;
+                            RegistrarTurno(tur, tur.estado);
+
+                        }
                         break;
                     case "2":
-                String nombre = (String) modelotabla.getValueAt(filaseleccionada, 0);
-                String interno = (String) modelotabla.getValueAt(filaseleccionada, 1);
-                resp = JOptionPane.showConfirmDialog(null, "Desea asignar el siguiente recurso: \nNombre:'" + nombre + "',\ninterno:'" + interno + "?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (resp == 0) {
-                    modelo.Medico med = new modelo.Medico(nombre, interno);
-                    med.estado = Estado.ASIGNADO;
-                    RegistrarMedico(med, med.estado);
-                }
+                        String nombre = (String) modelotabla.getValueAt(filaseleccionada, 0);
+                        String interno = (String) modelotabla.getValueAt(filaseleccionada, 1);
+                        resp = JOptionPane.showConfirmDialog(null, "Desea asignar el siguiente recurso: \nNombre:'" + nombre + "',\ninterno:'" + interno + "?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if (resp == 0) {
+                            modelo.Medico med = new modelo.Medico(nombre, interno);
+                            med.estado = Estado.ASIGNADO;
+                            RegistrarMedico(med, med.estado);
+                        }
                         break;
                     case "3":
                         String numero = (String) modelotabla.getValueAt(filaseleccionada, 0);
                         resp = JOptionPane.showConfirmDialog(null, "Desea asignar el siguiente recurso: \nNumero de ambulancia:'" + numero + "?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (resp == 0) {
-                    modelo.Ambulancia amb = new modelo.Ambulancia(numero);
-                    amb.estado = Estado.ASIGNADO;
-                    RegistrarAmbulancia(amb, amb.estado);
-                }
+                        if (resp == 0) {
+                            modelo.Ambulancia amb = new modelo.Ambulancia(numero);
+                            amb.estado = Estado.ASIGNADO;
+                            RegistrarAmbulancia(amb, amb.estado);
+                        }
                         break;
                 }
             }
@@ -280,17 +285,22 @@ public class ControladorGestionRecursos {
     }
     
     public static ArrayList<modelo.Turno> VerificarFecha(String fecha, ArrayList<modelo.Turno> tur) throws ParseException{
+        
         ArrayList<modelo.Turno> res = new ArrayList();
         int i;
+        
         Calendar cal = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         cal.setTime(sdf.parse(fecha));
+        
         for (i = 0; i<tur.size() ; i++){
+            
             cal2.setTime(sdf.parse(tur.get(i).getFecha()));
             if(cal2.getTime().getDate()> cal.getTime().getDate() & (cal2.getTime().getMonth()+1) >= (cal.getTime().getMonth()+1) & (cal2.getTime().getYear()+1900) == (cal.getTime().getYear()+1900)){
                 res.add(tur.get(i));
             }
+            
         }
         return res;
     }

@@ -34,6 +34,7 @@ public class ControladorGestionarLlamada {
             modelo.Persona per = new modelo.Persona(dni, nombre, apellido, domicilio, telefono);
             String ca = controlador.ControladorGestionRecursos.Cantidad();
             modelo.Nivel niv = controlador.ControladorGestionRecursos.clasificarNivel(CargarSeleccionados());
+            
             if (controlador.ControladorGestionRecursos.VerificarRecurso(niv.getNiv(), SacarFecha()) == true) {
                 controlador.ControladorGestionRecursos.Iniciar(niv.getNiv(), llam, per, ca);
                 vreg.dispose();
@@ -163,7 +164,8 @@ public class ControladorGestionarLlamada {
 
         for (i = 0; i < vreg.getTbSintomas().getRowCount(); i++) {
             for (j = 0; j < val1.size(); j++) {
-                if ((Boolean) vreg.getTbSintomas().getValueAt(i, 0) == true & sin.get(j).getDescripcion().equals((String) vreg.getTbSintomas().getValueAt(i, 1))) {
+                if ((Boolean) vreg.getTbSintomas().getValueAt(i, 0) == true 
+                        & sin.get(j).getDescripcion().equals((String) vreg.getTbSintomas().getValueAt(i, 1))) {
                     niv.add(val1.get(j));
                 }
             }
