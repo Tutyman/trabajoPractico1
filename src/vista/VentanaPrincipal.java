@@ -5,20 +5,12 @@
  */
 package vista;
 
-import controlador.ControladorGestionarLlamada;
-import controlador.ControladorListarLlamadas;
-import controlador.ControladorRecursos;
-
 /**
  *
  * @author Tomas
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    ControladorGestionarLlamada contGesLla = new ControladorGestionarLlamada();
-    ControladorListarLlamadas contListLla = new ControladorListarLlamadas();
-    ControladorRecursos contRec = new ControladorRecursos();
-    
     /**
      * Creates new form VentanaPrincipal
      */
@@ -110,12 +102,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void BtnLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLlamadaActionPerformed
         dispose();
-        contGesLla.Iniciar();
+        controlador.ControladorGestionarLlamada.Iniciar();
     }//GEN-LAST:event_BtnLlamadaActionPerformed
 
     private void BtnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnListarActionPerformed
         dispose();
-        contListLla.Iniciar();
+        controlador.ControladorListarLlamadas.Iniciar();
     }//GEN-LAST:event_BtnListarActionPerformed
 
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
@@ -124,7 +116,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void BtnRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRecursosActionPerformed
         dispose();
-        contRec.Iniciar();
+        controlador.ControladorRecursos.Iniciar();
     }//GEN-LAST:event_BtnRecursosActionPerformed
 
     /**

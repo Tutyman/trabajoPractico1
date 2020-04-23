@@ -6,22 +6,23 @@
 package vista;
 
 import javax.swing.JTable;
-import controlador.ControladorGrafica;
+
 /**
  *
  * @author Tomas
  */
 public class VentanaLista extends javax.swing.JFrame {
 
-    ControladorGrafica contGra = new ControladorGrafica();
-    
+    /**
+     * Creates new form VentanaLista
+     */
     public VentanaLista() {
         initComponents();
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 dispose();
-                contGra.Iniciar();
+                controlador.ControladorGrafica.Iniciar();
             }
         });
     }

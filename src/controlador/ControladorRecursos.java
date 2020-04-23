@@ -1,31 +1,26 @@
 package controlador;
 
-import controlador.ControladorGrafica;
+import static controlador.ControladorGrafica.vrec;
 import javax.swing.JOptionPane;
-import vista.VentanaRecursos;
 
 
 public class ControladorRecursos {
 
-    VentanaRecursos vrec = new VentanaRecursos();
-    
-    public void Iniciar() {
+    public static void Iniciar() {
         vrec.setVisible(true);
         vrec.setLocationRelativeTo(null);
-
     }
 
-    public void RegistrarTurno() {
-        if (VerificarTurno() == true) {
+    public static void RegistrarTurno() {
+        if (VerificarTurno() == false) {
             modelo.Turno tur = new modelo.Turno(vrec.getTxtFecha().getText(), vrec.getTxtHora().getText(), vrec.getTxtTelefono().getText());
             modelo.Memoria.AgregarTurnoCarga(tur);
             Vaciar();
         }
     }
 
-    public void RegistrarMedico() {
-        
-        if (VerificarMedico() == true) {
+    public static void RegistrarMedico() {
+        if (VerificarMedico() == false) {
             modelo.Medico med = new modelo.Medico(vrec.getTxtNombre().getText(), vrec.getTxtInterno().getText());
             modelo.Memoria.AgregarMedicoCarga(med);
             Vaciar();
@@ -33,15 +28,15 @@ public class ControladorRecursos {
         
     }
 
-    public void RegistrarAmbulancia() {
-        if (VerificarAmbulancia() == true) {
+    public static void RegistrarAmbulancia() {
+        if (VerificarAmbulancia() == false) {
             modelo.Ambulancia amb = new modelo.Ambulancia(vrec.getTxtAmbulancia().getText());
             modelo.Memoria.AgregarAmbulanciaCarga(amb);
             Vaciar();
         }
     }
 
-    public void Vaciar() {
+    public static void Vaciar() {
         vrec.getTxtFecha().setText("");
         vrec.getTxtHora().setText("");
         vrec.getTxtTelefono().setText("");
@@ -50,7 +45,7 @@ public class ControladorRecursos {
         vrec.getTxtAmbulancia().setText("");
     }
 
-    public Boolean VerificarTurno() {
+    public static Boolean VerificarTurno() {
         Boolean valor = false;
         JOptionPane op1 = new JOptionPane();
         if (vrec.getTxtFecha().getText().isEmpty()) {
@@ -66,34 +61,12 @@ public class ControladorRecursos {
             op1.showMessageDialog(vrec, "Debe ingresar el telefono");
             vrec.getTxtTelefono().requestFocus();
         } else {
-            valor = true;
+            valor = false;
         }
         return valor;
     }
-    
-    public Boolean VerificarTurno2() {
-            Boolean valor = true;
-            if (vrec.getTxtFecha().getText().equals("")) {
-                valor=false;
-                JOptionPane.showMessageDialog(null, "Ingrese la fecha");
-                vrec.getTxtFecha().requestFocus();
-            } 
-            
-            if (vrec.getTxtHora().getText().equals("")) {
-                valor=false;
-                JOptionPane.showMessageDialog(null, "Ingrese la hora");
-                vrec.getTxtHora().requestFocus();
-            } 
-            
-            if (vrec.getTxtTelefono().getText().equals("")) {
-                valor=false;
-                JOptionPane.showMessageDialog(null, "Ingrese un telefono");
-                vrec.getTxtTelefono().requestFocus();
-            }
-            return valor;
-    }
 
-    public Boolean VerificarMedico() {
+    public static Boolean VerificarMedico() {
         Boolean valor = false;
         JOptionPane op1 = new JOptionPane();
         if (vrec.getTxtNombre().getText().isEmpty()) {
@@ -110,7 +83,7 @@ public class ControladorRecursos {
         return valor;
     }
 
-    public Boolean VerificarAmbulancia() {
+    public static Boolean VerificarAmbulancia() {
         Boolean valor = false;
         JOptionPane op1 = new JOptionPane();
         if (vrec.getTxtAmbulancia().getText().isEmpty()) {

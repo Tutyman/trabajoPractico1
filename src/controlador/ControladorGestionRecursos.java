@@ -1,7 +1,7 @@
 package controlador;
 
-import controlador.ControladorGrafica;
-import controlador.ControladorGrafica;
+import static controlador.ControladorGrafica.vreg;
+import static controlador.ControladorGrafica.vasg;
 import java.awt.HeadlessException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,27 +13,16 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Estado;
 import modelo.Nivel;
-import vista.VentanaAsignar;
-import vista.VentanaRegistrar;
-import controlador.ControladorGestionarLlamada;
-import controlador.ControladorGrafica;
-import controlador.ControladorGestionRecursos;
 
 public class ControladorGestionRecursos {
 
-    VentanaRegistrar vreg = new vista.VentanaRegistrar();
-    VentanaAsignar vasg = new vista.VentanaAsignar();
-    ControladorGestionarLlamada contGestLla = new ControladorGestionarLlamada();
-    ControladorGrafica contGra = new ControladorGrafica();
-    ControladorGestionRecursos contGesRec = new ControladorGestionRecursos();
-    
-    modelo.Nivel niv = new modelo.Nivel("");
-    modelo.Llamada llam = new modelo.Llamada();
-    modelo.Persona per = new modelo.Persona();
-    String can;
+    static modelo.Nivel niv = new modelo.Nivel("");
+    static modelo.Llamada llam = new modelo.Llamada();
+    static modelo.Persona per = new modelo.Persona();
+    static String can;
     
     
-    public void Iniciar(String nivel, modelo.Llamada la, modelo.Persona pe, String canti) throws ParseException{
+    public static void Iniciar(String nivel, modelo.Llamada la, modelo.Persona pe, String canti) throws ParseException{
         vasg.setVisible(true);
         vasg.setLocationRelativeTo(null);
         vasg.getLbNivel().setText("La persona se encuentrar en el nivel de gravedad N°"+nivel);
@@ -44,7 +33,7 @@ public class ControladorGestionRecursos {
         CargarRecursos(nivel);
     }
 
-    public modelo.Nivel clasificarNivel(ArrayList<modelo.Nivel> nive) {
+    public static modelo.Nivel clasificarNivel(ArrayList<modelo.Nivel> nive) {
         int i;
         modelo.Nivel nivel = new modelo.Nivel("");
         
@@ -66,7 +55,7 @@ public class ControladorGestionRecursos {
         return nivel;
     }
 
-    public String Cantidad() {
+    public static String Cantidad() {
         int i;
         int aux = 0;
         String fila = "";
@@ -80,7 +69,7 @@ public class ControladorGestionRecursos {
 
     }
 
-    public Boolean VerificarRecurso(String nivel, String fecha) throws ParseException {
+    public static Boolean VerificarRecurso(String nivel, String fecha) throws ParseException {
         Boolean valor = false;
         int i;
         int aux = 0;
@@ -121,7 +110,7 @@ public class ControladorGestionRecursos {
         return valor;
     }
     
-    public void RegistrarTurno(modelo.Turno tur, Estado estado){
+    public static void RegistrarTurno(modelo.Turno tur, Estado estado){
         modelo.Memoria.AgregarLlamada(llam);
         modelo.Memoria.AgregarPersona(per);
         modelo.Memoria.AgregarNivel(niv);
@@ -129,11 +118,11 @@ public class ControladorGestionRecursos {
         modelo.Memoria.AgregarRecurso("Fecha: "+tur.getFecha() + ", Hora: " + tur.getHora());
         modelo.Memoria.EstadoTurno(tur);
         vasg.dispose();
-        contGestLla.Limpiar();
-        contGra.Iniciar();
+        controlador.ControladorGestionarLlamada.Limpiar();
+        controlador.ControladorGrafica.Iniciar();
     }
     
-    public void RegistrarMedico(modelo.Medico med, Estado estado){
+    public static void RegistrarMedico(modelo.Medico med, Estado estado){
         modelo.Memoria.AgregarLlamada(llam);
         modelo.Memoria.AgregarPersona(per);
         modelo.Memoria.AgregarNivel(niv);
@@ -141,11 +130,11 @@ public class ControladorGestionRecursos {
         modelo.Memoria.AgregarRecurso("Medico: "+med.getNombre());
         modelo.Memoria.EstadoMedico(med);
         vasg.dispose();
-        contGestLla.Limpiar();
-        contGra.Iniciar();
+        controlador.ControladorGestionarLlamada.Limpiar();
+        controlador.ControladorGrafica.Iniciar();
     }
     
-    public void RegistrarAmbulancia(modelo.Ambulancia amb, Estado estado){
+    public static void RegistrarAmbulancia(modelo.Ambulancia amb, Estado estado){
         modelo.Memoria.AgregarLlamada(llam);
         modelo.Memoria.AgregarPersona(per);
         modelo.Memoria.AgregarNivel(niv);
@@ -153,11 +142,11 @@ public class ControladorGestionRecursos {
         modelo.Memoria.AgregarRecurso("Ambulancia N°: "+amb.getNumero());
         modelo.Memoria.EstadoAmbulancia(amb);
         vasg.dispose();
-        contGestLla.Limpiar();
-        contGra.Iniciar();
+        controlador.ControladorGestionarLlamada.Limpiar();
+        controlador.ControladorGrafica.Iniciar();
     }
     
-    public void CargarRecursos(String nivel) throws ParseException {
+    public static void CargarRecursos(String nivel) throws ParseException {
         TableRowSorter<TableModel> sorter; //Necesaria para el filtrado de la tabla
         int i;
 
@@ -240,7 +229,7 @@ public class ControladorGestionRecursos {
         vasg.getTbAsiganar().setRowSorter(sorter);
     }
     
-    public void AsignarRecurso(String nivel) {
+    public static void AsignarRecurso(String nivel) {
 
         int filaseleccionada;
         try {
@@ -295,7 +284,7 @@ public class ControladorGestionRecursos {
         }
     }
     
-    public ArrayList<modelo.Turno> VerificarFecha(String fecha, ArrayList<modelo.Turno> tur) throws ParseException{
+    public static ArrayList<modelo.Turno> VerificarFecha(String fecha, ArrayList<modelo.Turno> tur) throws ParseException{
         
         ArrayList<modelo.Turno> res = new ArrayList();
         int i;
@@ -316,11 +305,11 @@ public class ControladorGestionRecursos {
         return res;
     }
 
-    public Nivel getNiv() {
+    public static Nivel getNiv() {
         return niv;
     }
 
-    public void setNiv(Nivel niv) {
-        contGesRec.niv = niv;
+    public static void setNiv(Nivel niv) {
+        ControladorGestionRecursos.niv = niv;
     }
 }

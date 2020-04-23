@@ -1,26 +1,20 @@
 package controlador;
 
-
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import vista.VentanaLista;
-
-import controlador.ControladorGrafica;
 
 public class ControladorListarLlamadas {
     
-    ControladorGrafica contGra = new ControladorGrafica();
+    static vista.VentanaLista vlis = controlador.ControladorGrafica.getVlis();
 
-    VentanaLista vlis = contGra.getVlis();
-
-    public void Iniciar() {
+    public static void Iniciar() {
         vlis.setVisible(true);
         vlis.setLocationRelativeTo(null);
         MostrarLista();
     }
     
-    public void MostrarLista() {
+    public static void MostrarLista() {
         TableRowSorter<TableModel> sorter; //Necesaria para el filtrado de la tabla
         int i;
 

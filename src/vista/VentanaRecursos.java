@@ -8,17 +8,12 @@ package vista;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
-import controlador.ControladorGrafica;
-import controlador.ControladorRecursos;
 /**
  *
  * @author Tomas
  */
 public class VentanaRecursos extends javax.swing.JFrame {
 
-    ControladorGrafica contGra = new ControladorGrafica();
-    ControladorRecursos contRec = new ControladorRecursos();
-    
     /**
      * Creates new form VentanaNiveles
      */
@@ -28,26 +23,27 @@ public class VentanaRecursos extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 dispose();
-                contGra.Iniciar();
+                controlador.ControladorGrafica.Iniciar();
             }
         });
     }
 
-    public JFormattedTextField getTxtFecha() {
+    public JTextField getTxtFecha() {
         return TxtFecha;
     }
 
-    public void setTxtFecha(JFormattedTextField TxtFecha) {
+    public void setTxtFecha(JTextField TxtFecha) {
         this.TxtFecha = TxtFecha;
     }
 
-    public JFormattedTextField getTxtHora() {
+    public JTextField getTxtHora() {
         return TxtHora;
     }
 
-    public void setTxtHora(JFormattedTextField TxtHora) {
+    public void setTxtHora(JTextField TxtHora) {
         this.TxtHora = TxtHora;
     }
+
 
     public JTextField getTxtAmbulancia() {
         return TxtAmbulancia;
@@ -96,10 +92,10 @@ public class VentanaRecursos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         TxtTelefono = new javax.swing.JTextField();
         BtnRegistrarTurno = new javax.swing.JButton();
-        TxtFecha = new javax.swing.JFormattedTextField();
-        TxtHora = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        TxtFecha = new javax.swing.JTextField();
+        TxtHora = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -137,12 +133,6 @@ public class VentanaRecursos extends javax.swing.JFrame {
             }
         });
 
-        TxtFecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        TxtFecha.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-
-        TxtHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        TxtHora.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setText("dd/MM/yy");
 
@@ -174,8 +164,8 @@ public class VentanaRecursos extends javax.swing.JFrame {
                                 .addGap(35, 35, 35)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TxtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(TxtFecha)
-                            .addComponent(TxtHora)))
+                            .addComponent(TxtFecha, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TxtHora, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(BtnRegistrarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -184,16 +174,16 @@ public class VentanaRecursos extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(TxtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(TxtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(TxtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(TxtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -317,22 +307,22 @@ public class VentanaRecursos extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegistrarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarTurnoActionPerformed
-        contRec.RegistrarTurno();
+        controlador.ControladorRecursos.RegistrarTurno();
     }//GEN-LAST:event_BtnRegistrarTurnoActionPerformed
 
     private void BtnRegistrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarMedicoActionPerformed
-        contRec.RegistrarMedico();
+        controlador.ControladorRecursos.RegistrarMedico();
     }//GEN-LAST:event_BtnRegistrarMedicoActionPerformed
 
     private void BtnRegistrarAmbulanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarAmbulanciaActionPerformed
-        contRec.RegistrarAmbulancia();
+        controlador.ControladorRecursos.RegistrarAmbulancia();
     }//GEN-LAST:event_BtnRegistrarAmbulanciaActionPerformed
 
     /**
@@ -344,8 +334,8 @@ public class VentanaRecursos extends javax.swing.JFrame {
     private javax.swing.JButton BtnRegistrarMedico;
     private javax.swing.JButton BtnRegistrarTurno;
     private javax.swing.JTextField TxtAmbulancia;
-    private javax.swing.JFormattedTextField TxtFecha;
-    private javax.swing.JFormattedTextField TxtHora;
+    private javax.swing.JTextField TxtFecha;
+    private javax.swing.JTextField TxtHora;
     private javax.swing.JTextField TxtInterno;
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtTelefono;
