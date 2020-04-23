@@ -8,7 +8,8 @@ import vista.VentanaRecursos;
 import vista.VentanaRegistrar;
 
 public class ControladorGrafica {
-
+    
+    //Declaramos todas ventanas para acceder a ellas
     static vista.VentanaPrincipal vpri = new vista.VentanaPrincipal();
     static vista.VentanaRegistrar vreg = new vista.VentanaRegistrar();
     static vista.VentanaLista vlis = new vista.VentanaLista();

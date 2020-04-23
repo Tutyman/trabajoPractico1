@@ -197,7 +197,7 @@ public class VentanaRegistrar extends javax.swing.JFrame {
         TxtSintoma.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
         BoxNivel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        BoxNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        BoxNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3" }));
 
         BtnAgregar.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         BtnAgregar.setText("Agregar Sintoma");

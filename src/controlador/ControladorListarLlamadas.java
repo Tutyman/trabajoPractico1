@@ -8,12 +8,14 @@ public class ControladorListarLlamadas {
     
     static vista.VentanaLista vlis = controlador.ControladorGrafica.getVlis();
 
+    //El metodo Iniciar() hace visible la ventana para listar las llamadas registradas
     public static void Iniciar() {
         vlis.setVisible(true);
         vlis.setLocationRelativeTo(null);
         MostrarLista();
     }
     
+    //El metodo MostrarLista() carga los datos registrados de las llamadas
     public static void MostrarLista() {
         TableRowSorter<TableModel> sorter; //Necesaria para el filtrado de la tabla
         int i;
@@ -35,8 +37,9 @@ public class ControladorListarLlamadas {
         mod.addColumn("Cantidad");
         mod.addColumn("Recursos");
         
-        for (i = 0; i < modelo.Memoria.getLlam().size(); i++) {  //Con 'cli' se recorre la lista 'Cliente'
-            Object[] fila //Se crea un objeto 'fila' que almacena cada elemento de la lista
+        //Recogemos los arraylist para crear un objeto y agregarlos al JTable
+        for (i = 0; i < modelo.Memoria.getLlam().size(); i++) {
+            Object[] fila 
                     = {
                         modelo.Memoria.getLlam().get(i).getFecha() + " " + modelo.Memoria.getLlam().get(i).getHora(),
                         modelo.Memoria.getPer().get(i).getDni(),
@@ -46,7 +49,6 @@ public class ControladorListarLlamadas {
                         modelo.Memoria.getCansin().get(i),
                         modelo.Memoria.getRecurso().get(i),
                     };
-            //Se añade el objeto creado al modelo
             mod.addRow(fila);
         }
 

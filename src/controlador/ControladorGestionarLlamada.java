@@ -12,18 +12,19 @@ public class ControladorGestionarLlamada {
 
     static vista.VentanaRegistrar vreg = controlador.ControladorGrafica.getVreg();
 
+    //El metodo Iniciar() hace visible la ventana para registrar
     public static void Iniciar() {
         vreg.setVisible(true);
         vreg.setLocationRelativeTo(null);
         CargarSintomas();
     }
 
+    //El metodo Registrar() captura los datos y los añade a la memoria
     public static void Registrar() throws ParseException {
-        Boolean valor = VerificarCampo();
         JOptionPane op1 = new JOptionPane();
-        if (valor == false) {
-            String fecha = SacarFecha();
-            String hora = SacarHora();
+        if (VerificarCampo() == false) {
+            String fecha = ObtenerFecha();
+            String hora = ObtenerHora();
             int dni = Integer.parseInt(vreg.getTxtDNI().getText());
             String nombre = vreg.getTxtNombre().getText();
             String apellido = vreg.getTxtApellido().getText();
@@ -35,7 +36,7 @@ public class ControladorGestionarLlamada {
             String ca = controlador.ControladorGestionRecursos.Cantidad();
             modelo.Nivel niv = controlador.ControladorGestionRecursos.clasificarNivel(CargarSeleccionados());
             
-            if (controlador.ControladorGestionRecursos.VerificarRecurso(niv.getNiv(), SacarFecha()) == true) {
+            if (controlador.ControladorGestionRecursos.VerificarRecurso(niv.getNiv(), ObtenerFecha()) == true) {
                 controlador.ControladorGestionRecursos.Iniciar(niv.getNiv(), llam, per, ca);
                 vreg.dispose();
             } else {
@@ -44,7 +45,8 @@ public class ControladorGestionarLlamada {
         }
     }
 
-    public static String SacarFecha() {
+    //El metodo ObtenerFecha() obtiene la fecha de hoy
+    public static String ObtenerFecha() {
         Calendar c1 = Calendar.getInstance();
         String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
         String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
@@ -52,8 +54,9 @@ public class ControladorGestionarLlamada {
         String fecha = (dia + "/" + mes + "/" + año);
         return fecha;
     }
-
-    public static String SacarHora() {
+    
+    //El metodo ObtenerHora() obtiene la hora en este momento
+    public static String ObtenerHora() {
         Calendar c1 = Calendar.getInstance();
         String hora = Integer.toString(c1.get(Calendar.HOUR_OF_DAY));
         String minuto = Integer.toString(c1.get(Calendar.MINUTE));
@@ -62,6 +65,7 @@ public class ControladorGestionarLlamada {
         return horahoy;
     }
 
+    //El metodo VerificarCampo() verificar si los campos estan vacios
     public static Boolean VerificarCampo() {
         Boolean valor = false;
         JOptionPane op1 = new JOptionPane();
@@ -92,6 +96,7 @@ public class ControladorGestionarLlamada {
         return valor;
     }
 
+    //El metodo Limpiar() elimina los datos ingresados en los texfield
     public static void Limpiar() {
         vreg.getTxtDNI().setText("");
         vreg.getTxtNombre().setText("");
@@ -101,20 +106,25 @@ public class ControladorGestionarLlamada {
         CargarSintomas();
     }
 
+    //El metodo CargarSintomas() carga todos los sintomas en la tabla 
     public static void CargarSintomas() {
         TableRowSorter<TableModel> sorter;
         int i;
-
+        
+        //Obtenemos todos los sintomas y niveles
         ArrayList<modelo.Nivel> rest = modelo.Memoria.getNivpre();
         ArrayList<modelo.Sintoma> sin = modelo.Memoria.getSinpre();
         ArrayList<modelo.Sintoma> mos = new ArrayList();
+        //Eliminamos los sintomas que no poseen nivel, en este caso los que poseen valor 0
         for (i = 0; i < rest.size(); i++) {
             if (!rest.get(i).getNiv().equals("0")) {
                 mos.add(sin.get(i));
             }
         }
-
+        
+        //Cargamos el modelo a la tabla
         DefaultTableModel modelo = new DefaultTableModel() {
+            //Sobreescribimos el metodo isCellEditable para que la primera columna sea editable
             @Override
             public boolean isCellEditable(int row, int column) {
                 if (column == 0) {
@@ -122,7 +132,10 @@ public class ControladorGestionarLlamada {
                 }
                 return false;
             }
-
+            
+            //Sobreescribimos el metodo getColumnClass para que el primer valor
+            //sea del tipo booleano y de ese modo que inserte un jcheckbox
+            //y pueda ser seleccionable
             @Override
             public Class getColumnClass(int columna) {
                 if (columna == 0) {
@@ -137,13 +150,12 @@ public class ControladorGestionarLlamada {
 
         modelo.addColumn("Seleccionar");
         modelo.addColumn("Sintomas");
-        Boolean valor = false;
 
         for (i = 0; i < mos.size(); i++) {
 
             Object[] fila
                     = {
-                        valor,
+                        false,
                         mos.get(i).getDescripcion()
                     };
 
@@ -155,6 +167,8 @@ public class ControladorGestionarLlamada {
         vreg.getTbSintomas().setRowSorter(sorter);
     }
 
+    //El metodo CargarSeleccionados() nos devuelve una lista de todos los sintomas
+    //que fueron seleccionados
     public static ArrayList<modelo.Nivel> CargarSeleccionados() {
         ArrayList<modelo.Nivel> niv = new ArrayList();
         ArrayList<modelo.Nivel> val1 = modelo.Memoria.getNivpre();
@@ -162,6 +176,7 @@ public class ControladorGestionarLlamada {
         int i;
         int j;
 
+        //Recorremos la tabla y verificamos que la primera columna sea verdadera
         for (i = 0; i < vreg.getTbSintomas().getRowCount(); i++) {
             for (j = 0; j < val1.size(); j++) {
                 if ((Boolean) vreg.getTbSintomas().getValueAt(i, 0) == true 
@@ -175,6 +190,7 @@ public class ControladorGestionarLlamada {
         return niv;
     }
 
+    //El metodo VerificarSeleccion() nos indica si ningun sintoma fue seleccionado
     public static Boolean VerificarSeleccion() {
         Boolean valor = false;
         int i;
@@ -191,13 +207,30 @@ public class ControladorGestionarLlamada {
         return valor;
     }
     
-    public static void AgregarSintoma(){
-        modelo.Nivel ns = new modelo.Nivel(vreg.getBoxNivel().getSelectedItem().toString());
-        modelo.Sintoma si = new modelo.Sintoma(vreg.getTxtSintoma().getText());
-        modelo.Memoria.AgregarNivelCarga(ns);
-        modelo.Memoria.AgregarSintomaCarga(si);
-        CargarSintomas();
+    //El metodo agregarSintoma() captura los datos del sintoma y los agrega a memoria
+    public static void AgregarSintoma() {
+        if (VerificarSintoma() == false) {
+            modelo.Nivel ns = new modelo.Nivel(vreg.getBoxNivel().getSelectedItem().toString());
+            modelo.Sintoma si = new modelo.Sintoma(vreg.getTxtSintoma().getText());
+            modelo.Memoria.AgregarNivelCarga(ns);
+            modelo.Memoria.AgregarSintomaCarga(si);
+            CargarSintomas();
+        }
+
     }
     
+    //El metodo VerificarSintoma() verifica si el campo esta vacio
+    public static Boolean VerificarSintoma(){
+        Boolean valor = false;
+        JOptionPane op1 = new JOptionPane();
+        if(vreg.getTxtSintoma().getText().isEmpty()){
+            valor = true;
+            op1.showMessageDialog(vreg, "Debe ingresar el sintoma");
+            vreg.getTxtSintoma().requestFocus();
+        }else {
+            valor = false;
+        }
+        return valor;
+    }
     
 }

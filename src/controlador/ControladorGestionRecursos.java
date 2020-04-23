@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -21,7 +22,9 @@ public class ControladorGestionRecursos {
     static modelo.Persona per = new modelo.Persona();
     static String can;
     
-    
+    //El metodo Iniciar() inicia la ventana para asignar el recurso
+    //Para ello se le debe enviar los datos de nivel, llamada, persona y la cantidad
+    //de sintomas
     public static void Iniciar(String nivel, modelo.Llamada la, modelo.Persona pe, String canti) throws ParseException{
         vasg.setVisible(true);
         vasg.setLocationRelativeTo(null);
@@ -30,31 +33,23 @@ public class ControladorGestionRecursos {
         llam = la;
         per = pe;
         can = canti;
-        CargarRecursos(nivel);
+        CargarRecursos();
     }
 
+    //El metodo clasifica el nivel de la persona y nos devulve un variable de tipo nivel
     public static modelo.Nivel clasificarNivel(ArrayList<modelo.Nivel> nive) {
         int i;
+        ArrayList<Integer> aux = new ArrayList();
         modelo.Nivel nivel = new modelo.Nivel("");
-        
+
         for (i = 0; i < nive.size(); i++) {
-            
-            if (nive.get(i).getNiv().equals("1")) {
-                nivel.setNiv("1");
-            }
-            
-            if (nive.get(i).getNiv().equals("1") & nive.get(i).getNiv().equals("2") | nive.get(i).getNiv().equals("2")) {
-                nivel.setNiv("2");
-            }
-            
-            if (nive.get(i).getNiv().equals("2") & nive.get(i).getNiv().equals("3") | nive.get(i).getNiv().equals("3")) {
-                nivel.setNiv("3");
-            }
-            
+            aux.add(Integer.parseInt(nive.get(i).getNiv()));
         }
+        nivel.setNiv(Integer.toString(Collections.max(aux)));
         return nivel;
     }
 
+    //El metodo nos devuelve la cantidad de sintomas seleccionados
     public static String Cantidad() {
         int i;
         int aux = 0;
@@ -69,6 +64,7 @@ public class ControladorGestionRecursos {
 
     }
 
+    //El metodo verifica si exiten sintomas para asignar a la persona
     public static Boolean VerificarRecurso(String nivel, String fecha) throws ParseException {
         Boolean valor = false;
         int i;
@@ -110,6 +106,7 @@ public class ControladorGestionRecursos {
         return valor;
     }
     
+    //El metodo captura los valores de la ventana y los agrega a memoria el turno
     public static void RegistrarTurno(modelo.Turno tur, Estado estado){
         modelo.Memoria.AgregarLlamada(llam);
         modelo.Memoria.AgregarPersona(per);
@@ -122,6 +119,7 @@ public class ControladorGestionRecursos {
         controlador.ControladorGrafica.Iniciar();
     }
     
+    //El metodo captura los valores de la ventana y los agrega a memoria el medico
     public static void RegistrarMedico(modelo.Medico med, Estado estado){
         modelo.Memoria.AgregarLlamada(llam);
         modelo.Memoria.AgregarPersona(per);
@@ -134,6 +132,7 @@ public class ControladorGestionRecursos {
         controlador.ControladorGrafica.Iniciar();
     }
     
+    //El metodo captura los valores de la ventana y los agrega a memoria la ambulancia
     public static void RegistrarAmbulancia(modelo.Ambulancia amb, Estado estado){
         modelo.Memoria.AgregarLlamada(llam);
         modelo.Memoria.AgregarPersona(per);
@@ -146,7 +145,8 @@ public class ControladorGestionRecursos {
         controlador.ControladorGrafica.Iniciar();
     }
     
-    public static void CargarRecursos(String nivel) throws ParseException {
+    //El metodo carga los recursos a la tabla jtable
+    public static void CargarRecursos() throws ParseException {
         TableRowSorter<TableModel> sorter; //Necesaria para el filtrado de la tabla
         int i;
 
@@ -159,7 +159,7 @@ public class ControladorGestionRecursos {
             }
         };
 
-        switch (nivel) {
+        switch (niv.getNiv()) {
             case "1":
                 ArrayList<modelo.Turno> tur = new ArrayList();
                 for (i=0; i<VerificarFecha(llam.getFecha(), modelo.Memoria.getTurpre()).size();i++) {
@@ -229,7 +229,9 @@ public class ControladorGestionRecursos {
         vasg.getTbAsiganar().setRowSorter(sorter);
     }
     
-    public static void AsignarRecurso(String nivel) {
+    //El metodo asigna el recurso a la persona, para ello se debera hacer clic al
+    //al recurso y aceptar si desea agregar ese recurso
+    public static void AsignarRecurso() {
 
         int filaseleccionada;
         try {
@@ -242,7 +244,7 @@ public class ControladorGestionRecursos {
             } else {
                 DefaultTableModel modelotabla = (DefaultTableModel) vasg.getTbAsiganar().getModel();
                 int resp;
-                switch(nivel){
+                switch(niv.getNiv()){
                     case "1":
                         String fecha = (String) modelotabla.getValueAt(filaseleccionada, 0);
                         String hora = (String) modelotabla.getValueAt(filaseleccionada, 1);
@@ -284,6 +286,7 @@ public class ControladorGestionRecursos {
         }
     }
     
+    //El metodo verifica si los turnos posee fecha posterior a la llamada
     public static ArrayList<modelo.Turno> VerificarFecha(String fecha, ArrayList<modelo.Turno> tur) throws ParseException{
         
         ArrayList<modelo.Turno> res = new ArrayList();
@@ -303,13 +306,5 @@ public class ControladorGestionRecursos {
             
         }
         return res;
-    }
-
-    public static Nivel getNiv() {
-        return niv;
-    }
-
-    public static void setNiv(Nivel niv) {
-        ControladorGestionRecursos.niv = niv;
     }
 }
