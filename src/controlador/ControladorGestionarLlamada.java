@@ -9,10 +9,15 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import vista.VentanaRegistrar;
+import controlador.ControladorGrafica;
+import controlador.ControladorGestionRecursos;
 
 public class ControladorGestionarLlamada {
 
-    VentanaRegistrar vreg = controlador.ControladorGrafica.getVreg();
+    ControladorGrafica contGra = new ControladorGrafica();
+    ControladorGestionRecursos contGesRec = new ControladorGestionRecursos();
+    
+    VentanaRegistrar vreg = contGra.getVreg();
 
     public void Iniciar() {
         vreg.setVisible(true);
@@ -34,11 +39,11 @@ public class ControladorGestionarLlamada {
 
             modelo.Llamada llam = new modelo.Llamada(fecha, hora);
             modelo.Persona per = new modelo.Persona(dni, nombre, apellido, domicilio, telefono);
-            String ca = controlador.ControladorGestionRecursos.Cantidad();
-            modelo.Nivel niv = controlador.ControladorGestionRecursos.clasificarNivel(CargarSeleccionados());
+            String ca = contGesRec.Cantidad();
+            modelo.Nivel niv = contGesRec.clasificarNivel(CargarSeleccionados());
             
-            if (controlador.ControladorGestionRecursos.VerificarRecurso(niv.getNiv(), SacarFecha()) == true) {
-                controlador.ControladorGestionRecursos.Iniciar(niv.getNiv(), llam, per, ca);
+            if (contGesRec.VerificarRecurso(niv.getNiv(), SacarFecha()) == true) {
+                contGesRec.Iniciar(niv.getNiv(), llam, per, ca);
                 vreg.dispose();
             } else {
                 op1.showMessageDialog(vreg, "No se posee recursos para asignar");

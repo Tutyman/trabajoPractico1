@@ -1,16 +1,21 @@
 package controlador;
 
-import static controlador.ControladorGrafica.vrec;
+import controlador.ControladorGrafica;
 import javax.swing.JOptionPane;
+import vista.VentanaRecursos;
+
 
 public class ControladorRecursos {
 
-    public static void Iniciar() {
+    VentanaRecursos vrec = new VentanaRecursos();
+    
+    public void Iniciar() {
         vrec.setVisible(true);
         vrec.setLocationRelativeTo(null);
+
     }
 
-    public static void RegistrarTurno() {
+    public void RegistrarTurno() {
         if (VerificarTurno() == true) {
             modelo.Turno tur = new modelo.Turno(vrec.getTxtFecha().getText(), vrec.getTxtHora().getText(), vrec.getTxtTelefono().getText());
             modelo.Memoria.AgregarTurnoCarga(tur);
@@ -18,7 +23,7 @@ public class ControladorRecursos {
         }
     }
 
-    public static void RegistrarMedico() {
+    public void RegistrarMedico() {
         
         if (VerificarMedico() == true) {
             modelo.Medico med = new modelo.Medico(vrec.getTxtNombre().getText(), vrec.getTxtInterno().getText());
@@ -28,7 +33,7 @@ public class ControladorRecursos {
         
     }
 
-    public static void RegistrarAmbulancia() {
+    public void RegistrarAmbulancia() {
         if (VerificarAmbulancia() == true) {
             modelo.Ambulancia amb = new modelo.Ambulancia(vrec.getTxtAmbulancia().getText());
             modelo.Memoria.AgregarAmbulanciaCarga(amb);
@@ -36,7 +41,7 @@ public class ControladorRecursos {
         }
     }
 
-    public static void Vaciar() {
+    public void Vaciar() {
         vrec.getTxtFecha().setText("");
         vrec.getTxtHora().setText("");
         vrec.getTxtTelefono().setText("");
@@ -45,7 +50,7 @@ public class ControladorRecursos {
         vrec.getTxtAmbulancia().setText("");
     }
 
-    public static Boolean VerificarTurno() {
+    public Boolean VerificarTurno() {
         Boolean valor = false;
         JOptionPane op1 = new JOptionPane();
         if (vrec.getTxtFecha().getText().isEmpty()) {
@@ -66,7 +71,7 @@ public class ControladorRecursos {
         return valor;
     }
     
-    public static Boolean VerificarTurno2() {
+    public Boolean VerificarTurno2() {
             Boolean valor = true;
             if (vrec.getTxtFecha().getText().equals("")) {
                 valor=false;
@@ -88,7 +93,7 @@ public class ControladorRecursos {
             return valor;
     }
 
-    public static Boolean VerificarMedico() {
+    public Boolean VerificarMedico() {
         Boolean valor = false;
         JOptionPane op1 = new JOptionPane();
         if (vrec.getTxtNombre().getText().isEmpty()) {
@@ -105,7 +110,7 @@ public class ControladorRecursos {
         return valor;
     }
 
-    public static Boolean VerificarAmbulancia() {
+    public Boolean VerificarAmbulancia() {
         Boolean valor = false;
         JOptionPane op1 = new JOptionPane();
         if (vrec.getTxtAmbulancia().getText().isEmpty()) {

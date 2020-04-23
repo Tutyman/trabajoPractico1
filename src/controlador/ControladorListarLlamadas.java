@@ -6,9 +6,13 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import vista.VentanaLista;
 
-public class ControladorListarLlamadas {
+import controlador.ControladorGrafica;
 
-    VentanaLista vlis = ControladorGrafica.getVlis();
+public class ControladorListarLlamadas {
+    
+    ControladorGrafica contGra = new ControladorGrafica();
+
+    VentanaLista vlis = contGra.getVlis();
 
     public void Iniciar() {
         vlis.setVisible(true);

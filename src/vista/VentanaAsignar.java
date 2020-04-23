@@ -10,23 +10,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
+import controlador.ControladorGrafica;
+import controlador.ControladorGestionRecursos;
 /**
  *
  * @author Tomas
  */
 public class VentanaAsignar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaNiveles
-     */
+    ControladorGrafica contGra = new ControladorGrafica();
+    ControladorGestionRecursos contGesRec = new ControladorGestionRecursos();
+    
     public VentanaAsignar() {
         initComponents();
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 dispose();
-                controlador.ControladorGrafica.Iniciar();
+                contGra.Iniciar();
             }
         });
     }
@@ -114,7 +115,7 @@ public class VentanaAsignar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TbAsiganarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TbAsiganarMouseClicked
-        controlador.ControladorGestionRecursos.AsignarRecurso(controlador.ControladorGestionRecursos.getNiv().getNiv());
+        contGesRec.AsignarRecurso(contGesRec.getNiv().getNiv());
     }//GEN-LAST:event_TbAsiganarMouseClicked
 
     /**

@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controlador.ControladorGrafica;
+import controlador.ControladorGestionarLlamada;
 
 /**
  *
@@ -20,16 +21,16 @@ import controlador.ControladorGrafica;
  */
 public class VentanaRegistrar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaRegistrar2
-     */
+    ControladorGrafica contGra = new ControladorGrafica();
+    ControladorGestionarLlamada contGestLla = new ControladorGestionarLlamada();
+    
     public VentanaRegistrar() {
         initComponents();
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 dispose();
-                ControladorGrafica.Iniciar();
+                contGra.Iniciar();
             }
         });
         
@@ -287,12 +288,12 @@ public class VentanaRegistrar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
-        controlador.ControladorGestionarLlamada.AgregarSintoma();
+        contGestLla.AgregarSintoma();
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
     private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
         try {
-            controlador.ControladorGestionarLlamada.Registrar();
+            contGestLla.Registrar();
         } catch (ParseException ex) {
             Logger.getLogger(VentanaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
         }

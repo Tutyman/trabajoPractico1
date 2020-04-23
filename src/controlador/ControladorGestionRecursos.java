@@ -13,11 +13,20 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Estado;
 import modelo.Nivel;
+import vista.VentanaAsignar;
+import vista.VentanaRegistrar;
+import controlador.ControladorGestionarLlamada;
+import controlador.ControladorGrafica;
+import controlador.ControladorGestionRecursos;
 
 public class ControladorGestionRecursos {
 
-    ControladorGrafica vreg = new ControladorGrafica();
-    ControladorGrafica vasg = new ControladorGrafica();
+    VentanaRegistrar vreg = new vista.VentanaRegistrar();
+    VentanaAsignar vasg = new vista.VentanaAsignar();
+    ControladorGestionarLlamada contGestLla = new ControladorGestionarLlamada();
+    ControladorGrafica contGra = new ControladorGrafica();
+    ControladorGestionRecursos contGesRec = new ControladorGestionRecursos();
+    
     modelo.Nivel niv = new modelo.Nivel("");
     modelo.Llamada llam = new modelo.Llamada();
     modelo.Persona per = new modelo.Persona();
@@ -120,8 +129,8 @@ public class ControladorGestionRecursos {
         modelo.Memoria.AgregarRecurso("Fecha: "+tur.getFecha() + ", Hora: " + tur.getHora());
         modelo.Memoria.EstadoTurno(tur);
         vasg.dispose();
-        controlador.ControladorGestionarLlamada.Limpiar();
-        controlador.ControladorGrafica.Iniciar();
+        contGestLla.Limpiar();
+        contGra.Iniciar();
     }
     
     public void RegistrarMedico(modelo.Medico med, Estado estado){
@@ -132,8 +141,8 @@ public class ControladorGestionRecursos {
         modelo.Memoria.AgregarRecurso("Medico: "+med.getNombre());
         modelo.Memoria.EstadoMedico(med);
         vasg.dispose();
-        controlador.ControladorGestionarLlamada.Limpiar();
-        controlador.ControladorGrafica.Iniciar();
+        contGestLla.Limpiar();
+        contGra.Iniciar();
     }
     
     public void RegistrarAmbulancia(modelo.Ambulancia amb, Estado estado){
@@ -144,8 +153,8 @@ public class ControladorGestionRecursos {
         modelo.Memoria.AgregarRecurso("Ambulancia N°: "+amb.getNumero());
         modelo.Memoria.EstadoAmbulancia(amb);
         vasg.dispose();
-        controlador.ControladorGestionarLlamada.Limpiar();
-        controlador.ControladorGrafica.Iniciar();
+        contGestLla.Limpiar();
+        contGra.Iniciar();
     }
     
     public void CargarRecursos(String nivel) throws ParseException {
@@ -312,6 +321,6 @@ public class ControladorGestionRecursos {
     }
 
     public void setNiv(Nivel niv) {
-        ControladorGestionRecursos.niv = niv;
+        contGesRec.niv = niv;
     }
 }

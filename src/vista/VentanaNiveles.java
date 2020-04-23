@@ -5,22 +5,22 @@
  */
 package vista;
 
+import controlador.ControladorGrafica;
 /**
  *
  * @author Tomas
  */
 public class VentanaNiveles extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaNiveles
-     */
+    ControladorGrafica contGra = new ControladorGrafica();
+    
     public VentanaNiveles() {
         initComponents();
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 dispose();
-                controlador.ControladorGrafica.Iniciar();
+                contGra.Iniciar();
             }
         });
     }

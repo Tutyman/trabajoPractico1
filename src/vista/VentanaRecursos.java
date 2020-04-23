@@ -8,12 +8,17 @@ package vista;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
+import controlador.ControladorGrafica;
+import controlador.ControladorRecursos;
 /**
  *
  * @author Tomas
  */
 public class VentanaRecursos extends javax.swing.JFrame {
 
+    ControladorGrafica contGra = new ControladorGrafica();
+    ControladorRecursos contRec = new ControladorRecursos();
+    
     /**
      * Creates new form VentanaNiveles
      */
@@ -23,7 +28,7 @@ public class VentanaRecursos extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 dispose();
-                controlador.ControladorGrafica.Iniciar();
+                contGra.Iniciar();
             }
         });
     }
@@ -319,15 +324,15 @@ public class VentanaRecursos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegistrarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarTurnoActionPerformed
-        controlador.ControladorRecursos.RegistrarTurno();
+        contRec.RegistrarTurno();
     }//GEN-LAST:event_BtnRegistrarTurnoActionPerformed
 
     private void BtnRegistrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarMedicoActionPerformed
-        controlador.ControladorRecursos.RegistrarMedico();
+        contRec.RegistrarMedico();
     }//GEN-LAST:event_BtnRegistrarMedicoActionPerformed
 
     private void BtnRegistrarAmbulanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarAmbulanciaActionPerformed
-        controlador.ControladorRecursos.RegistrarAmbulancia();
+        contRec.RegistrarAmbulancia();
     }//GEN-LAST:event_BtnRegistrarAmbulanciaActionPerformed
 
     /**
