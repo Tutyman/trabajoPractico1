@@ -1,10 +1,11 @@
 package controlador;
 
+import controlador.ControladorGrafica;
 public class Principal {
 
     public static void main(String[] args) {
         controlador.ControladorCargar.DatosIniciales();
-        controlador.ControladorGrafica.Iniciar();
+        ControladorGrafica.Iniciar();
     }
     
 }

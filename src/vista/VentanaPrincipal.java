@@ -5,6 +5,9 @@
  */
 package vista;
 
+import controlador.ControladorGestionarLlamada;
+import controlador.ControladorListarLlamadas;
+
 /**
  *
  * @author Tomas
@@ -102,12 +105,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void BtnLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLlamadaActionPerformed
         dispose();
-        controlador.ControladorGestionarLlamada.Iniciar();
+        ControladorGestionarLlamada.Iniciar();
     }//GEN-LAST:event_BtnLlamadaActionPerformed
 
     private void BtnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnListarActionPerformed
         dispose();
-        controlador.ControladorListarLlamadas.Iniciar();
+        ControladorListarLlamadas.Iniciar();
     }//GEN-LAST:event_BtnListarActionPerformed
 
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed

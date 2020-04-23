@@ -1,5 +1,7 @@
 package controlador;
 
+import javax.swing.JOptionPane;
+
 public class ControladorCargar {
 
     public static void DatosIniciales() {
@@ -15,6 +17,7 @@ public class ControladorCargar {
         modelo.Nivel nie10 = new modelo.Nivel("0");
         modelo.Nivel nie11 = new modelo.Nivel("0");
         modelo.Nivel nie12 = new modelo.Nivel("0");
+        
         modelo.Sintoma sin1 = new modelo.Sintoma("Tos seca");
         modelo.Sintoma sin2 = new modelo.Sintoma("Dolor muscular");
         modelo.Sintoma sin3 = new modelo.Sintoma("Dolor de garganta");
@@ -27,24 +30,31 @@ public class ControladorCargar {
         modelo.Sintoma sin10 = new modelo.Sintoma("Flema");
         modelo.Sintoma sin11 = new modelo.Sintoma("Disnea");
         modelo.Sintoma sin12 = new modelo.Sintoma("Congestion nasal");
-        modelo.Turno tur1 = new modelo.Turno("23/04/2020", "9:00", "4624");
-        modelo.Turno tur2 = new modelo.Turno("23/04/2020", "10:00", "45756");
-        modelo.Turno tur3 = new modelo.Turno("23/04/2020", "11:00", "456456");
+        
+        modelo.Turno tur1 = new modelo.Turno("23/04/2020", "17:00", "4624");
+        modelo.Turno tur2 = new modelo.Turno("24/04/2020", "18:00", "45756");
+        modelo.Turno tur3 = new modelo.Turno("24/04/2020", "18:00", "456456");
+        
         modelo.Medico med1 = new modelo.Medico("Eli", "425125");
         modelo.Medico med2 = new modelo.Medico("Alix", "42555125");
         modelo.Medico med3 = new modelo.Medico("Clainer", "42235125");
+        
         modelo.Ambulancia amb1 = new modelo.Ambulancia("1");
         modelo.Ambulancia amb2 = new modelo.Ambulancia("2");
         modelo.Ambulancia amb3 = new modelo.Ambulancia("3");
+        
         modelo.Memoria.AgregarTurnoCarga(tur1);
         modelo.Memoria.AgregarTurnoCarga(tur2);
         modelo.Memoria.AgregarTurnoCarga(tur3);
+        
         modelo.Memoria.AgregarMedicoCarga(med1);
         modelo.Memoria.AgregarMedicoCarga(med2);
         modelo.Memoria.AgregarMedicoCarga(med3);
+        
         modelo.Memoria.AgregarAmbulanciaCarga(amb1);
         modelo.Memoria.AgregarAmbulanciaCarga(amb2);
         modelo.Memoria.AgregarAmbulanciaCarga(amb3);
+        
         modelo.Memoria.AgregarNivelCarga(nie1);
         modelo.Memoria.AgregarNivelCarga(nie2);
         modelo.Memoria.AgregarNivelCarga(nie3);
@@ -57,6 +67,7 @@ public class ControladorCargar {
         modelo.Memoria.AgregarNivelCarga(nie10);
         modelo.Memoria.AgregarNivelCarga(nie11);
         modelo.Memoria.AgregarNivelCarga(nie12);
+        
         modelo.Memoria.AgregarSintomaCarga(sin1);
         modelo.Memoria.AgregarSintomaCarga(sin2);
         modelo.Memoria.AgregarSintomaCarga(sin3);

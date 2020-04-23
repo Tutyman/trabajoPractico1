@@ -22,30 +22,39 @@ public class Memoria {
     public static void AgregarPersona(modelo.Persona valor){
         per.add(valor);
     }
+    
     public static void AgregarNivel(modelo.Nivel valor){
         niv.add(valor);
     }
+    
     public static void AgregarNivelCarga(modelo.Nivel valor){
         nivpre.add(valor);
     }
+    
     public static void AgregarSintomaCarga(modelo.Sintoma valor){
         sinpre.add(valor);
     }
+    
     public static void AgregarSintoma(modelo.Sintoma valor){
         sin.add(valor);
     }
+    
     public static void AgregarSintomaCantidad(String valor){
         cansin.add(valor);
     }
+    
     public static void AgregarRecurso(String valor){
         recurso.add(valor);
     }
+    
     public static void AgregarTurnoCarga(modelo.Turno valor){
         turpre.add(valor);
     }
+    
     public static void AgregarMedicoCarga(modelo.Medico valor){
         medpre.add(valor);
     }
+    
     public static void AgregarAmbulanciaCarga(modelo.Ambulancia valor){
         ambpre.add(valor);
     }

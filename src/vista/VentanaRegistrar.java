@@ -12,6 +12,8 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import controlador.ControladorGrafica;
+
 /**
  *
  * @author Tomas
@@ -27,7 +29,7 @@ public class VentanaRegistrar extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 dispose();
-                controlador.ControladorGrafica.Iniciar();
+                ControladorGrafica.Iniciar();
             }
         });
         

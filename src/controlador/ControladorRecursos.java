@@ -19,11 +19,13 @@ public class ControladorRecursos {
     }
 
     public static void RegistrarMedico() {
+        
         if (VerificarMedico() == true) {
             modelo.Medico med = new modelo.Medico(vrec.getTxtNombre().getText(), vrec.getTxtInterno().getText());
             modelo.Memoria.AgregarMedicoCarga(med);
             Vaciar();
         }
+        
     }
 
     public static void RegistrarAmbulancia() {
@@ -59,9 +61,31 @@ public class ControladorRecursos {
             op1.showMessageDialog(vrec, "Debe ingresar el telefono");
             vrec.getTxtTelefono().requestFocus();
         } else {
-            valor = false;
+            valor = true;
         }
         return valor;
+    }
+    
+    public static Boolean VerificarTurno2() {
+            Boolean valor = true;
+            if (vrec.getTxtFecha().getText().equals("")) {
+                valor=false;
+                JOptionPane.showMessageDialog(null, "Ingrese la fecha");
+                vrec.getTxtFecha().requestFocus();
+            } 
+            
+            if (vrec.getTxtHora().getText().equals("")) {
+                valor=false;
+                JOptionPane.showMessageDialog(null, "Ingrese la hora");
+                vrec.getTxtHora().requestFocus();
+            } 
+            
+            if (vrec.getTxtTelefono().getText().equals("")) {
+                valor=false;
+                JOptionPane.showMessageDialog(null, "Ingrese un telefono");
+                vrec.getTxtTelefono().requestFocus();
+            }
+            return valor;
     }
 
     public static Boolean VerificarMedico() {

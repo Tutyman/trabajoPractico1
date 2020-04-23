@@ -9,39 +9,40 @@ import vista.VentanaRegistrar;
 
 public class ControladorGrafica {
 
-    static vista.VentanaPrincipal vpri = new vista.VentanaPrincipal();
-    static vista.VentanaRegistrar vreg = new vista.VentanaRegistrar();
-    static vista.VentanaLista vlis = new vista.VentanaLista();
-    static vista.VentanaAsignar vasg = new vista.VentanaAsignar();
-    static vista.VentanaRecursos vrec = new vista.VentanaRecursos();
-    static vista.VentanaNiveles vniv = new vista.VentanaNiveles();
+    VentanaPrincipal vpri = new vista.VentanaPrincipal();
+    VentanaRegistrar vreg = new vista.VentanaRegistrar();
+    VentanaLista vlis = new vista.VentanaLista();
+    VentanaAsignar vasg = new vista.VentanaAsignar();
+    VentanaRecursos vrec = new vista.VentanaRecursos();
+    VentanaNiveles vniv = new vista.VentanaNiveles();
 
-    public static void Iniciar() {
+    public void Iniciar() {
         vpri.setVisible(true);
         vpri.setLocationRelativeTo(null);
     }
 
-    public static VentanaPrincipal getVpri() {
+    public VentanaPrincipal getVpri() {
         return vpri;
     }
 
-    public static VentanaRegistrar getVreg() {
+    public VentanaRegistrar getVreg() {
         return vreg;
     }
 
-    public static VentanaLista getVlis() {
+    public VentanaLista getVlis() {
         return vlis;
     }
 
-    public static VentanaAsignar getVasg() {
+    public VentanaAsignar getVasg() {
         return vasg;
     }
 
-    public static VentanaRecursos getVrec() {
+    public VentanaRecursos getVrec() {
         return vrec;
     }
 
-    public static VentanaNiveles getVniv() {
+    public VentanaNiveles getVniv() {
         return vniv;
     }
+
 }
